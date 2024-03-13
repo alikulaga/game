@@ -12,10 +12,18 @@ class Sprite {
         this.image.src = imageSrc;
 
         this.scale = scale;
+
+    }
+    height() {
+        return this.image.height * this.scale
+    }
+    width() {
+        return this.image.width * this.scale
     }
 
     //Draws the sprite to the screen
     draw() {
+        
 
         //Draws the sprite with canvas "drawimage"
         //Takes image, and the
@@ -23,8 +31,8 @@ class Sprite {
             this.image,
             this.position.x,
             this.position.y,
-            this.image.width * this.scale,
-            this.image.height * this.scale
+            this.width(),
+            this.height()
             );
         }  
 

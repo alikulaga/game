@@ -11,10 +11,9 @@ class Enemy extends Sprite{
             imageSrc,
             scale,
         })
-        this.position = position;
         this.velocity = velocity;
         this.speed = speed;
-        this.scale = scale;
+
         this.attacking = false;
         this.hit = false;
         this.health = 100;
@@ -29,6 +28,7 @@ class Enemy extends Sprite{
         this.draw();
         this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
+        this.setVelocities();
        
     }
 
@@ -54,11 +54,11 @@ class Enemy extends Sprite{
        
         var sign = Math.abs(Xdistance) / Xdistance;
         var vertSign = 1;
-        
+       
         // if (Math.abs(this.position.x - player.position.x) < 10 && Math.abs(this.position.y - player.position.y < 10) {
         //     player.hit = true;
         // }
-        
+       
        
         if(
             //Checks if player's attack is inside the enemy's hitbox
@@ -68,21 +68,9 @@ class Enemy extends Sprite{
             this.position.y < attackY &&
             this.position.y + (this.image.height * this.scale) > attackY)
         ) {
-            
-
-
-
-
+           
             //updates hit
             this.hit = true;
-
-
-
-
-
-
-
-
 
 
 
@@ -92,6 +80,12 @@ class Enemy extends Sprite{
                 this.angle += (this.angle / Math.abs(this.angle)) * .2
                
                 sign = -sign
+
+
+
+
+
+
 
 
                 this.fixAngles = true;
@@ -108,6 +102,30 @@ class Enemy extends Sprite{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             //Randomizes knockback
             this.angle += Math.PI / 2
             this.angle += Math.random() * Math.PI
@@ -115,28 +133,40 @@ class Enemy extends Sprite{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
             //Knockback is reversed
             sign = -sign
        
-           
-
-
-
-
-
-
-
-
-
-
-
-
+       
             //Health is decreased
-            this.health -= 10;
+            this.health -= 20;
        
             //Updates hit to false after 400 milliseconds
             setTimeout(() => {
                 this.hit = false;
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -149,8 +179,8 @@ class Enemy extends Sprite{
         }
        
         if (this.fixAngles) {
-            vertSign = -Math.sin(this.angle) / Math.abs(Math.sin(this.angle)) * Math.sign(Ydistance)
-            sign = -Math.cos(this.angle) / Math.abs(Math.cos(this.angle)) * Math.sign(Xdistance)
+            vertSign = -Math.sin(this.angle) / Math.abs(Math.sin(this.angle)) * Ydistance / Math.abs(Ydistance)
+            sign = -Math.cos(this.angle) / Math.abs(Math.cos(this.angle)) * Xdistance / Math.abs(Xdistance)
         } else {
             vertSign = sign
         }
@@ -158,5 +188,27 @@ class Enemy extends Sprite{
         this.velocity.x = enemySpeed * sign * (Math.cos(this.angle)) + (sign * this.knockbackSpeed * Math.cos(this.angle));
        
         this.velocity.y = enemySpeed * vertSign * Math.sin(this.angle) + (vertSign * this.knockbackSpeed * Math.sin(this.angle));  
+   
+        for(let i = 0; i < wallList.length; i++) {
+            if (wallList[i] != null) {
+                if(wallList[i].colliding(this.position, this.width(), this.height(), this.velocity) == 1) {
+                    this.velocity.x = 0;
+                } else if (wallList[i].colliding(this.position, this.width(), this.height(), this.velocity) == 2) {
+                    this.velocity.y = 0;
+                    console.log("hello")
+                }
+            }
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
