@@ -2,16 +2,21 @@
 const canvas = document.querySelector("canvas");
 const c = canvas.getContext("2d");
 
+
 //Height and width of the whole screen, including healthbar area
 canvas.width = 1600;
 canvas.height = 900;
+
 
 //How fast enemies and players move
 const playerSpeed = 10;
 const enemySpeed = 3;
 
+
 //Bottom of the playable screen (Adjusted because of health bar display)
 const gameBottom = canvas.height - 80;
+
+
 
 
 //The background, remains the same
@@ -27,6 +32,10 @@ const background = new Sprite({
 
 
 
+
+
+
+
 //Which keys are currently pressed
 const keys = {
     a: {pressed: false},
@@ -37,29 +46,38 @@ const keys = {
 
 
 
+
+
+
 //The player we control
 const player = new Player({
-        
+       
         //Where player starts
         position:
         {x: 0, y: 0},
+
 
         //Velocity player starts with
         velocity:
         {x: 0, y: 0},
 
+
         //Player's speed (updatable above)
         speed: playerSpeed,
+
 
         //What player looks like (taken from img folder)
         imageSrc: "./img/Player.png",
 
+
         //Scale the image to proper size
         scale: .25,
+
 
         //How much health should player have
         health: 500
 })
+
 
 //Weapon, always tracks to player
 const weapon = new Sprite ({
@@ -67,3 +85,4 @@ const weapon = new Sprite ({
     imageSrc: "./img/Sword.png",
     scale: .15
 })
+
