@@ -1,0 +1,36 @@
+class Room {
+    constructor ({
+        WallList,
+        EnemyList
+    }) {
+        this.WallList = WallList
+        this.EnemyList = EnemyList
+    }
+
+
+    update() {
+        for (let i = 0; i < this.EnemyList.length; i++) {
+       
+            if (this.EnemyList[i]!= null) {
+   
+   
+                this.EnemyList[i].update();
+   
+   
+                if (this.EnemyList[i].health < 1) {
+                    this.EnemyList[i] = null;
+                }
+   
+   
+            }
+        }
+   
+   
+        for(let i = 0; i < this.WallList.length; i++) {
+            if (this.WallList[i] != null) {
+                this.WallList[i].update();
+            }
+        }
+    }
+}
+

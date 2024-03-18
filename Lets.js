@@ -17,8 +17,4 @@ let gameover = false;
 let attackX;
 let attackY;
 
-//Array of enemies
-let enemyList = [];
-
-//Array of walls
-let wallList = [];
+let currentRoom;

@@ -54,7 +54,7 @@ const player = new Player({
        
         //Where player starts
         position:
-        {x: 0, y: 0},
+        {x: 100, y: 100},
 
 
         //Velocity player starts with
@@ -71,7 +71,7 @@ const player = new Player({
 
 
         //Scale the image to proper size
-        scale: .25,
+        scale: .2,
 
 
         //How much health should player have
