@@ -63,6 +63,13 @@ room2 = new Room({
    
         scale: .2
         })
+    ],
+
+    RoomsListNESW: [
+        room1,
+        null,
+        null,
+        null
     ]
 
 

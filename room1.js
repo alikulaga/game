@@ -42,8 +42,15 @@ room1 = new Room({
    
         imageSrc: "./img/Goblin.png",
    
-        scale: .2
+        scale: .15
         })
+    ],
+
+    connectedRooms: [
+        null,
+        null,
+        null,
+        null
     ]
 
 

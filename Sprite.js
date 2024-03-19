@@ -4,7 +4,7 @@ class Sprite {
         position,
         imageSrc,
         scale,
-        endposition
+      
     }) {
         this.position = position;
 
@@ -12,9 +12,8 @@ class Sprite {
         this.image.src = imageSrc;
 
         this.scale = scale;
-    }
 
-    //Return the scaled widths and heights of any sprite
+    }
     height() {
         return this.image.height * this.scale
     }
@@ -22,11 +21,12 @@ class Sprite {
         return this.image.width * this.scale
     }
 
-
     //Draws the sprite to the screen
     draw() {
         
+
         //Draws the sprite with canvas "drawimage"
+        //Takes image, and the
         c.drawImage(
             this.image,
             this.position.x,
@@ -36,10 +36,8 @@ class Sprite {
             );
         }  
 
-
     //updates information about the sprite, and draws the next frame
     update() {
         this.draw();
     }
 }
-

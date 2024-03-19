@@ -25,8 +25,6 @@ class Enemy extends Sprite{
     }
 
 
-
-
     update() {
         this.draw();
         this.position.x += this.velocity.x;
@@ -36,8 +34,6 @@ class Enemy extends Sprite{
     }
 
 
-
-
     setVelocities() {
    
         var Xdistance = ((player.position.x) - this.position.x)
@@ -45,8 +41,6 @@ class Enemy extends Sprite{
         if (Xdistance < .2 && Xdistance > -.2) {
             Xdistance = .2;
         }
-
-
 
 
         if (!this.hit) {
@@ -79,89 +73,19 @@ class Enemy extends Sprite{
             //updates hit
             this.hit = true;
 
-
-
-
-
-
-
-
             if(Math.abs(this.angle) > (Math.PI / 2 - 0.1)) {
                
                 this.angle += (this.angle / Math.abs(this.angle)) * .2
                
                 sign = -sign
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 this.fixAngles = true;
 
-
-
-
-
-
-
-
             }
-
-
-
-
-
-
-
-
-
-
-
 
             //Randomizes knockback
             this.angle += Math.PI / 2
             this.angle += Math.random() * Math.PI
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
             //Knockback is reversed
@@ -174,35 +98,6 @@ class Enemy extends Sprite{
             //Updates hit to false after 400 milliseconds
             setTimeout(() => {
                 this.hit = false;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -224,20 +119,20 @@ class Enemy extends Sprite{
        
         this.velocity.y = enemySpeed * vertSign * Math.sin(this.angle) + (vertSign * this.knockbackSpeed * Math.sin(this.angle));  
    
-        for(let i = 0; i < currentRoom.WallList.length; i++) {
-            if (currentRoom.WallList[i] != null) {
+        this.checkWalls();
+    }
 
-                var collisionDirection = currentRoom.WallList[i].colliding(this.position, this.width(), this.height(), this.velocity)
+    checkWalls() {
+        for(let i = 0; i < currentLevel.currentRoom.WallList.length; i++) {
+            if (currentLevel.currentRoom.WallList[i] != null) {
+                var collisionDirection = currentLevel.currentRoom.WallList[i].colliding(this.position, this.width(), this.height(), this.velocity)
 
                 if(collisionDirection == 1) {
-                    this.velocity.x = 0;
-                    
+                    this.velocity.x = 0; 
                 } 
                 if (collisionDirection == 2) {
                     this.velocity.y = 0;
-                   
                 }
-               
             }
         }
     }

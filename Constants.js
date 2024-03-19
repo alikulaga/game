@@ -71,7 +71,7 @@ const player = new Player({
 
 
         //Scale the image to proper size
-        scale: .2,
+        scale: .15,
 
 
         //How much health should player have
@@ -80,8 +80,8 @@ const player = new Player({
 
 
 //Weapon, always tracks to player
-const weapon = new Sprite ({
-    position: player.position,
+const weapon = new Weapon ({
+    position: {x: player.position.x - 20, y: player.position.y - 20},
     imageSrc: "./img/Sword.png",
     scale: .15
 })

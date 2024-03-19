@@ -1,6 +1,4 @@
-
-currentRoom = room1;
-
+var currentLevel = new Level({currentRoom: room2})
 
 function animate() {
 
@@ -15,7 +13,7 @@ function animate() {
     player.update();
 
 
-    currentRoom.update();
+    currentLevel.update();
    
    
    

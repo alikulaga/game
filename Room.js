@@ -1,14 +1,20 @@
 class Room {
     constructor ({
         WallList,
-        EnemyList
+        EnemyList,
+        
+        RoomsListNESW
+
     }) {
         this.WallList = WallList
         this.EnemyList = EnemyList
+
+        this.RoomsListNESW = RoomsListNESW 
     }
 
 
-    update() {
+
+    load() {
         for (let i = 0; i < this.EnemyList.length; i++) {
        
             if (this.EnemyList[i]!= null) {
@@ -31,6 +37,20 @@ class Room {
                 this.WallList[i].update();
             }
         }
+
+
+        this.switchRooms()
     }
+
+    switchRooms() {
+        if (player.position.x > 900) {
+            currentLevel.switchRooms(this.RoomsListNESW[0])
+            player.position.x = 40
+        }
+        
+    }
+
+
+    
 }
 

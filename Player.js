@@ -110,20 +110,16 @@ class Player extends Sprite{
 
 
 
-        for(let i = 0; i < currentRoom.WallList.length; i++) {
-            if (currentRoom.WallList[i] != null) {
-
-                var collisionDirection = currentRoom.WallList[i].colliding(this.position, this.width(), this.height(), this.velocity)
+        for(let i = 0; i < currentLevel.currentRoom.WallList.length; i++) {
+            if (currentLevel.currentRoom.WallList[i] != null) {
+                var collisionDirection = currentLevel.currentRoom.WallList[i].colliding(this.position, this.width(), this.height(), this.velocity)
 
                 if(collisionDirection == 1) {
-                    this.velocity.x = 0;
-                    
+                    this.velocity.x = 0; 
                 } 
                 if (collisionDirection == 2) {
                     this.velocity.y = 0;
-                   
                 }
-               
             }
         }
 
