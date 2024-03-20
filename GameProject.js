@@ -1,4 +1,4 @@
-var currentLevel = new Level({currentRoom: room2})
+var currentLevel = level1_1
 
 function animate() {
 

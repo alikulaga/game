@@ -37,20 +37,6 @@ class Room {
                 this.WallList[i].update();
             }
         }
-
-
-        this.switchRooms()
     }
-
-    switchRooms() {
-        if (player.position.x > 900) {
-            currentLevel.switchRooms(this.RoomsListNESW[0])
-            player.position.x = 40
-        }
-        
-    }
-
-
-    
 }
 

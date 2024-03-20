@@ -43,8 +43,8 @@ class Player extends Sprite{
 
     //Finds where an attack lands based on mouse position
     setAttackLocation() {
-        var centerX = this.position.x + (this.scaledWidth / 2)
-        var centerY = this.position.y + (this.scaledHeight / 2)
+        var centerX = this.position.x + (this.width() / 2)
+        var centerY = this.position.y + (this.height() / 2)
 
 
 
@@ -93,11 +93,6 @@ class Player extends Sprite{
         //Updates the healthbar to match player's health
         document.querySelector('#HealthBar').style.width = this.health + 'px';
 
-
-
-
-        this.scaledWidth = this.image.width * this.scale;
-        this.scaledHeight = this.image.height * this.scale;
        
    
    
