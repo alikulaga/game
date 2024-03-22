@@ -93,7 +93,7 @@ class Enemy extends Sprite{
        
        
             //Health is decreased
-            this.health;
+            this.health -= 50;
        
             //Updates hit to false after 400 milliseconds
             setTimeout(() => {
@@ -101,8 +101,7 @@ class Enemy extends Sprite{
 
 
 
-            }, 400
-            )
+            }, 400)
            
             //Knockback speed is increased from zero
             this.knockbackSpeed = 5
@@ -120,6 +119,12 @@ class Enemy extends Sprite{
         this.velocity.y = enemySpeed * vertSign * Math.sin(this.angle) + (vertSign * this.knockbackSpeed * Math.sin(this.angle));  
    
         this.checkWalls();
+
+        if (this.health < 1) {
+            this.image.src = "./img/GoblinDead.png"  
+            this.velocity.x = 0
+            this.velocity.y = 0
+        }
     }
 
     checkWalls() {
@@ -136,6 +141,8 @@ class Enemy extends Sprite{
             }
         }
     }
+
+    
 }
 
 

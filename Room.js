@@ -24,7 +24,9 @@ class Room {
    
    
                 if (this.EnemyList[i].health < 1) {
-                    this.EnemyList[i] = null;
+                    setTimeout(() => {
+                        this.EnemyList[i] = null;
+                    }, 600)
                 }
    
    

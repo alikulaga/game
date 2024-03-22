@@ -35,12 +35,6 @@ class Player extends Sprite{
     }
 
 
-
-
-
-
-
-
     //Finds where an attack lands based on mouse position
     setAttackLocation() {
         var centerX = this.position.x + (this.width() / 2)
@@ -58,14 +52,14 @@ class Player extends Sprite{
 
 
 
-        attackX = centerX - (sign * 100 * Math.cos(angle) + 1)
-        attackY = centerY - (sign * 100 * Math.sin(angle) + 1)
+        attackX = centerX - (sign * 80 * Math.cos(angle) + 1)
+        attackY = centerY - (sign * 80 * Math.sin(angle) + 1)
 
 
 
 
         //Fills small rectangle to see where attack landed (temporary)
-        c.fillRect(attackX, attackY, 2, 2)
+        c.fillRect(attackX, attackY, 10, 10)
     }
    
 
@@ -126,22 +120,3 @@ class Player extends Sprite{
        
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

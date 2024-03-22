@@ -49,7 +49,9 @@ room1_1_1 = new Room({
             scale: 1,
             width: 25,
             height: 500
-        })
+        }),
+
+       
     ],
 
 

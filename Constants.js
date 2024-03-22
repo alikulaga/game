@@ -9,7 +9,7 @@ canvas.height = 900;
 
 
 //How fast enemies and players move
-const playerSpeed = 10;
+const playerSpeed = 5;
 const enemySpeed = 3;
 
 

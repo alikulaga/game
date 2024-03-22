@@ -32,7 +32,7 @@ room1_1_3 = new Room({
             imageSrc: "./img/Wall.png",
             scale: 1,
             width: 25,
-            height: 1000
+            height: 400
         }),
 
         //Bottom Wall
@@ -51,7 +51,17 @@ room1_1_3 = new Room({
             scale: 1,
             width: 1100,
             height: 200
-        })    
+        }),
+
+        //Door
+        new Wall({
+            position:{x: 1575, y: 600},
+            imageSrc: "./img/Door.png",
+            scale: .3,
+            width: 25,
+            height: 300
+        })
+
     ],
 
 
