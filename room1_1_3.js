@@ -18,13 +18,7 @@ room1_1_3 = new Room({
         }),
 
         //Left Wall
-        new Wall({
-            position:{x: 0, y: 0},
-            imageSrc: "./img/Wall.png",
-            scale: 1,
-            width: 25,
-            height: 1000
-        }),
+        westBorder,
         
         //Right Wall
         new Wall({
@@ -36,13 +30,7 @@ room1_1_3 = new Room({
         }),
 
         //Bottom Wall
-        new Wall({
-            position:{x: 0, y: 795},
-            imageSrc: "./img/Wall.png",
-            scale: 1,
-            width: 1600,
-            height: 25
-        }),
+        southBorder,
 
         //Other Walls
         new Wall({
@@ -91,6 +79,8 @@ room1_1_3 = new Room({
         scale: .15
         })
     ],
+
+    doorIndex: 6,
 
     RoomsListNESW: []
 

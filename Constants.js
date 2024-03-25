@@ -9,7 +9,7 @@ canvas.height = 900;
 
 
 //How fast enemies and players move
-const playerSpeed = 1;
+const playerSpeed = 5;
 const enemySpeed = 3;
 
 
@@ -84,5 +84,37 @@ const weapon = new Weapon ({
     position: {x: player.position.x - 20, y: player.position.y - 20},
     imageSrc: "./img/Sword.png",
     scale: .15
+})
+
+const northBorder = new Wall({
+    position:{x: 0, y: 0},
+    imageSrc: "./img/Wall.png",
+    scale: 1,
+    width: 2500,
+    height: 25
+})
+
+const eastBorder = new Wall({
+    position:{x: 1575, y: 0},
+    imageSrc: "./img/Wall.png",
+    scale: 1,
+    width: 25,
+    height: 1000
+})
+
+const southBorder = new Wall({
+    position:{x: 0, y: 795},
+    imageSrc: "./img/Wall.png",
+    scale: 1,
+    width: 2500,
+    height: 25
+})
+
+const westBorder = new Wall({
+    position:{x: 0, y: 0},
+    imageSrc: "./img/Wall.png",
+    scale: 1,
+    width: 25,
+    height: 1000
 })
 

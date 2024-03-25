@@ -1,12 +1,10 @@
 room1_1_2 = new Room({
     WallList: [
-        new Wall({
-            position:{x: 0, y: 0},
-            imageSrc: "./img/Wall.png",
-            scale: 1,
-            width: 2500,
-            height: 25
-        }),  
+        
+        //Top wall
+        northBorder,  
+
+        //Left wall
         new Wall({
             position:{x: 0, y: 0},
             imageSrc: "./img/Wall.png",
@@ -21,20 +19,14 @@ room1_1_2 = new Room({
             width: 25,
             height: 500
         }),
-        new Wall({
-            position:{x: 0, y: 795},
-            imageSrc: "./img/Wall.png",
-            scale: 1,
-            width: 2500,
-            height: 25
-        }),
-        new Wall({
-            position:{x: 1575, y: 0},
-            imageSrc: "./img/Wall.png",
-            scale: 1,
-            width: 25,
-            height: 1000
-        }),
+
+        //Bottom wall
+        southBorder,
+
+        //Right wall
+        eastBorder,
+
+        //Middle wall
         new Wall({
             position:{x: 500, y: 400},
             imageSrc: "./img/Wall.png",
@@ -71,6 +63,8 @@ room1_1_2 = new Room({
         scale: .15
         })
     ],
+
+    doorIndex: 6,
 
     RoomsListNESW: []
 

@@ -60,7 +60,7 @@ class Wall extends Sprite {
 
 
 
-            if (objectPosition.y < this.position.y && objectPosition.y + objectHeight + objectVelocity.y > this.position.y || objectPosition.y > this.position.y && objectPosition.y + objectVelocity.y < this.position.y + this.height) {
+            if (objectPosition.y < this.position.y && objectPosition.y + objectHeight + objectVelocity.y >= this.position.y || objectPosition.y > this.position.y && objectPosition.y + objectVelocity.y <= this.position.y + this.height) {
                 return 2;
             }
         }

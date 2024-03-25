@@ -3,6 +3,7 @@ class Room {
         WallList,
         EnemyList,
         
+        doorIndex,
         RoomsListNESW
 
     }) {
@@ -10,14 +11,23 @@ class Room {
         this.EnemyList = EnemyList
 
         this.RoomsListNESW = RoomsListNESW 
+
+        this.doorIndex = doorIndex;
+
+        this.enemysDead = false;
+
+        this.doorRemoved = false;
+        
     }
 
 
 
     load() {
+        this.enemysDead = true;
         for (let i = 0; i < this.EnemyList.length; i++) {
        
             if (this.EnemyList[i]!= null) {
+                this.enemysDead = false;
    
    
                 this.EnemyList[i].update();
@@ -31,6 +41,13 @@ class Room {
    
    
             }
+        }
+
+
+        
+        if (this.doorIndex != null && this.enemysDead && !this.doorRemoved) {
+            this.WallList[this.doorIndex] = null;
+            this.doorRemoved = true
         }
    
    

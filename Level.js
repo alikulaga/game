@@ -11,8 +11,8 @@ class Level {
         this.currentRoom.load();
 
         this.checkExits();
-        console.log(player.position.y)
     }
+
 
     checkExits() {
         if (player.position.y < -1 * player.height()) {
@@ -30,6 +30,10 @@ class Level {
             this.currentRoom = this.currentRoom.RoomsListNESW[3]
             player.position.x = canvas.width - player.width()
         }
+
+
+        
+        
     }
 
     
