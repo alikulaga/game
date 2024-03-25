@@ -51,6 +51,8 @@ room1_1_1 = new Room({
             height: 500
         }),
 
+        
+
        
     ],
 

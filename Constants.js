@@ -9,7 +9,7 @@ canvas.height = 900;
 
 
 //How fast enemies and players move
-const playerSpeed = 5;
+const playerSpeed = 1;
 const enemySpeed = 3;
 
 
@@ -54,7 +54,7 @@ const player = new Player({
        
         //Where player starts
         position:
-        {x: 100, y: 100},
+        {x: 1500, y: 300},
 
 
         //Velocity player starts with

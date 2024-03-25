@@ -50,17 +50,17 @@ room1_1_3 = new Room({
             imageSrc: "./img/Wall.png",
             scale: 1,
             width: 1100,
-            height: 200
+            height: 210
         }),
 
         //Door
         new Wall({
-            position:{x: 1575, y: 600},
+            position:{x: 1575, y: 610},
             imageSrc: "./img/Door.png",
-            scale: .3,
+            scale: 1/3,
             width: 25,
-            height: 300
-        })
+            height: 190
+        }),
 
     ],
 
