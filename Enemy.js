@@ -30,6 +30,11 @@ class Enemy extends Sprite{
         this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
         this.setVelocities();
+
+        if (!this.attacking) {
+            this.checkHit();
+        }
+        
        
     }
 
@@ -70,6 +75,7 @@ class Enemy extends Sprite{
             this.position.y + (this.image.height * this.scale) > attackY)
         ) {
            
+            
             //updates hit
             this.hit = true;
 
@@ -140,6 +146,30 @@ class Enemy extends Sprite{
                 }
             }
         }
+    }
+
+    checkHit() {
+        var playerHitBoxX = player.position.x - (player.width() / 10)
+        var playerHitBoxWidth = player.width() * 12 / 10
+        var playerHitBoxY = player.position.y - (player.height() / 10)
+        var playerHitBoxHeight = player.height() * 12 / 10
+
+        var centerX = this.position.x + (this.width() / 2)
+        var centerY = this.position.y + (this.height() / 2)
+
+
+        if (centerX > playerHitBoxX &&
+            centerX < playerHitBoxX + playerHitBoxWidth &&
+            centerY > playerHitBoxY &&
+            centerY < playerHitBoxY + playerHitBoxHeight) {
+                this.attacking = true;
+                player.hit = true;
+
+                setTimeout(() => {
+                    this.attacking = false;
+                }, 400
+                )
+            }
     }
 
     

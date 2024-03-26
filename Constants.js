@@ -19,15 +19,7 @@ const gameBottom = canvas.height - 80;
 
 
 
-//The background, remains the same
-const background = new Sprite({
-    position: {
-        x: 0,
-        y: 0,
-    },
-    imageSrc: "./img/Background.png",
-    scale: 2.5
-})
+
 
 
 

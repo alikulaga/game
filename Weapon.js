@@ -14,5 +14,6 @@ class Weapon extends Sprite{
         this.position.x = player.position.x - 13
         this.position.y = player.position.y - 38
         this.draw()
+        
     }
 }

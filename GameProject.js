@@ -2,31 +2,14 @@ var currentLevel = level1_1
 
 function animate() {
 
-
-
-
     window.requestAnimationFrame(animate);
    
-   
-    background.update();
-    weapon.update();
-    player.update();
-
-
     currentLevel.update();
    
-   
-   
 
-
-
-
+    weapon.update()
    
     player.attacking = false;
-
-
-
-
 
 
 
@@ -39,57 +22,7 @@ function animate() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     if (keys.a.pressed && lastKeyX == 'a') {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         player.velocity.x = - playerSpeed;

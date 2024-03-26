@@ -54,6 +54,7 @@ class Room {
         for(let i = 0; i < this.WallList.length; i++) {
             if (this.WallList[i] != null) {
                 this.WallList[i].update();
+                
             }
         }
     }

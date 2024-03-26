@@ -68,19 +68,29 @@ class Player extends Sprite{
 
     //Updates player data
     update() {
+        if (this.health == 0) {
+            
+        }
+
         this.draw();
 
 
 
 
         if (this.hit) {
-            this.health--;
-            setTimeout(() => {
-                this.hit = false;
-            }, 400
-            )
+            if (player.health > 40) {
+                this.health-= 40;
+            } else {
+                this.health = 0;
+            }
+            
+            
+            document.querySelector('#HealthBar').style.width = this.health + 'px';
+            this.hit = false;
+
+            console.log("hello")
         }
-        this.health--;
+        
 
 
 

@@ -1,14 +1,20 @@
 
 class Level {
     constructor({
-        currentRoom
+        currentRoom,
+        background,
     }) {
 
         this.currentRoom = currentRoom
+        this.background = background
     }
 
     update() {
+        this.background.update();
+        player.update();
         this.currentRoom.load();
+        
+        
 
         this.checkExits();
     }
