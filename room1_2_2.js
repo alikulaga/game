@@ -1,27 +1,26 @@
-room1_1_1 = new Room({
+room1_2_2 = new Room ({
     WallList: [
         //Top Wall
         northBorder,
 
         //Left Wall
-        westBorder,
+        new Wall({
+            position:{x: 0, y: 0},
+            imageSrc: "./img/Wall.png",
+            scale: 1,
+            width: 25,
+            height: 600
+        }),
+        new Wall({
+            position:{x: 0, y: 750},
+            imageSrc: "./img/Wall.png",
+            scale: 1,
+            width: 25,
+            height: 200
+        }),
 
         //Bottom Wall
-        new Wall({
-            position:{x: 0, y: 795},
-            imageSrc: "./img/Wall.png",
-            scale: 1,
-            width: 500,
-            height: 25
-        }),
-
-        new Wall({
-            position:{x: 700, y: 795},
-            imageSrc: "./img/Wall.png",
-            scale: 1,
-            width: 900,
-            height: 25
-        }),
+        southBorder,
 
         //Right Wall
         new Wall({
@@ -29,14 +28,14 @@ room1_1_1 = new Room({
             imageSrc: "./img/Wall.png",
             scale: 1,
             width: 25,
-            height: 300
+            height: 100
         }),
         new Wall({
-            position:{x: 1575, y: 450},
+            position:{x: 1575, y: 250},
             imageSrc: "./img/Wall.png",
             scale: 1,
             width: 25,
-            height: 500
+            height: 550
         }),
     ],
 
@@ -47,11 +46,16 @@ room1_1_1 = new Room({
         }),
 
         new Goblin({
-            position:{x: 300, y: 300}
+            position:{x: 500, y: 700}
+        }),
+
+        new Goblin({
+            position:{x: 200, y: 300}
         })
     ],
 
     doorIndex: null,
 
     RoomsListNESW: []
+
 })

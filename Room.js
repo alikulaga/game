@@ -25,7 +25,7 @@ class Room {
     load() {
         this.enemysDead = true;
         for (let i = 0; i < this.EnemyList.length; i++) {
-       
+            
             if (this.EnemyList[i]!= null) {
                 this.enemysDead = false;
    

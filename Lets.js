@@ -12,6 +12,7 @@ let mouseY;
 //Tells if the player has died
 let gameover = false;
 
+let playerStrength = 20;
 
 //The coordinates where the player's attack lands
 let attackX;

@@ -1,21 +1,13 @@
-var currentLevel = level1_1
+var currentWorld = world1;
 
 function animate() {
 
     window.requestAnimationFrame(animate);
    
-    currentLevel.update();
-   
-
-    weapon.update()
+    currentWorld.load();
    
     player.attacking = false;
 
-
-
-
-   
-   
     player.velocity.x = 0;
     player.velocity.y = 0;
 
@@ -29,32 +21,6 @@ function animate() {
     } else if(keys.d.pressed && lastKeyX == 'd') {
         player.velocity.x = playerSpeed;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

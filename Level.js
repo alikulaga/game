@@ -14,6 +14,7 @@ class Level {
         player.update();
         this.currentRoom.load();
         
+        weapon.update()
         
 
         this.checkExits();

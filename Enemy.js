@@ -99,7 +99,7 @@ class Enemy extends Sprite{
        
        
             //Health is decreased
-            this.health -= 50;
+            this.health -= playerStrength;
        
             //Updates hit to false after 400 milliseconds
             setTimeout(() => {
@@ -120,6 +120,9 @@ class Enemy extends Sprite{
             vertSign = sign
         }
        
+        this.velocity.x = 10
+
+
         this.velocity.x = enemySpeed * sign * (Math.cos(this.angle)) + (sign * this.knockbackSpeed * Math.cos(this.angle));
        
         this.velocity.y = enemySpeed * vertSign * Math.sin(this.angle) + (vertSign * this.knockbackSpeed * Math.sin(this.angle));  
@@ -134,9 +137,9 @@ class Enemy extends Sprite{
     }
 
     checkWalls() {
-        for(let i = 0; i < currentLevel.currentRoom.WallList.length; i++) {
-            if (currentLevel.currentRoom.WallList[i] != null) {
-                var collisionDirection = currentLevel.currentRoom.WallList[i].colliding(this.position, this.width(), this.height(), this.velocity)
+        for(let i = 0; i < currentWorld.getCurrentLevel().currentRoom.WallList.length; i++) {
+            if (currentWorld.getCurrentLevel().currentRoom.WallList[i] != null) {
+                var collisionDirection = currentWorld.getCurrentLevel().currentRoom.WallList[i].colliding(this.position, this.width(), this.height(), this.velocity)
 
                 if(collisionDirection == 1) {
                     this.velocity.x = 0; 

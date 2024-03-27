@@ -1,6 +1,5 @@
-room1_1_4 = new Room({
+room1_2_3 = new Room ({
     WallList: [
-
         //Top Wall
         northBorder,
 
@@ -10,40 +9,44 @@ room1_1_4 = new Room({
             imageSrc: "./img/Wall.png",
             scale: 1,
             width: 25,
-            height: 610
+            height: 100
         }),
-        
-        //Right Wall
-        eastBorder,
-        
+        new Wall({
+            position:{x: 0, y: 250},
+            imageSrc: "./img/Wall.png",
+            scale: 1,
+            width: 25,
+            height: 550
+        }),
+
         //Bottom Wall
         southBorder,
 
-
+        //Right Wall
+        eastBorder
     ],
 
 
     EnemyList: [
         new Goblin({
-            position:{x:400,  y: 50},
-        }),
-        
-        new Goblin({
-            position:{x:800,  y: 50},
+            position:{x: 800, y: 500}
         }),
 
         new Goblin({
-            position:{x:200,  y: 50},
+            position:{x: 500, y: 700}
         }),
 
         new Goblin({
-            position:{x:800,  y: 600},
+            position:{x: 200, y: 200}
+        }),
+
+        new Goblin({
+            position:{x: 500, y: 100}
         })
     ],
 
     doorIndex: null,
 
     RoomsListNESW: []
-
 
 })

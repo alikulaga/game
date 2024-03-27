@@ -78,6 +78,11 @@ class Player extends Sprite{
 
 
         if (this.hit) {
+            this.image.src = "./img/PlayerHurt.png"
+            setTimeout(() => {
+                this.image.src = "./img/Player.png";
+            }, 100
+            )
             if (player.health > 40) {
                 this.health-= 40;
             } else {
@@ -88,7 +93,6 @@ class Player extends Sprite{
             document.querySelector('#HealthBar').style.width = this.health + 'px';
             this.hit = false;
 
-            console.log("hello")
         }
         
 
@@ -109,9 +113,9 @@ class Player extends Sprite{
 
 
 
-        for(let i = 0; i < currentLevel.currentRoom.WallList.length; i++) {
-            if (currentLevel.currentRoom.WallList[i] != null) {
-                var collisionDirection = currentLevel.currentRoom.WallList[i].colliding(this.position, this.width(), this.height(), this.velocity)
+        for(let i = 0; i < currentWorld.getCurrentLevel().currentRoom.WallList.length; i++) {
+            if (currentWorld.getCurrentLevel().currentRoom.WallList[i] != null) {
+                var collisionDirection = currentWorld.getCurrentLevel().currentRoom.WallList[i].colliding(this.position, this.width(), this.height(), this.velocity)
 
                 if(collisionDirection == 1) {
                     this.velocity.x = 0; 
