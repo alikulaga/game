@@ -1,15 +1,20 @@
 var currentWorld = world1;
+//var skely = new Skeleton({position:{x: 500, y: 400}})
+
 
 function animate() {
 
     window.requestAnimationFrame(animate);
    
     currentWorld.load();
-   
+    
+    //skely.update()
     player.attacking = false;
 
     player.velocity.x = 0;
     player.velocity.y = 0;
+
+
 
 
 

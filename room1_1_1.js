@@ -48,6 +48,10 @@ room1_1_1 = new Room({
 
         new Goblin({
             position:{x: 300, y: 300}
+        }),
+
+        new Skeleton({
+            position:{x: 400, y: 600}
         })
     ],
 

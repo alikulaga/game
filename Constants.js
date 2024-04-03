@@ -46,7 +46,7 @@ const player = new Player({
        
         //Where player starts
         position:
-        {x: 50, y: 50},
+        {x: 600, y: 50},
 
 
         //Velocity player starts with
