@@ -23,14 +23,16 @@ class Room {
 
 
     load() {
+        
         this.enemysDead = true;
         for (let i = 0; i < this.EnemyList.length; i++) {
-            
+            console.log(i)
             if (this.EnemyList[i]!= null) {
                 this.enemysDead = false;
    
-   
+                console.log("sagh")
                 this.EnemyList[i].update();
+                
    
    
                 if (this.EnemyList[i].health < 1) {

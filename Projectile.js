@@ -24,10 +24,10 @@ class Projectile extends Sprite{
 
         var angle = Math.atan(yDist / xDist)
         
+        var arrowSpeed = 13
         
-        
-        this.xVelocity =  9 * xSign * Math.cos(angle)
-        this.yVelocity =  9 * xSign * Math.sin(angle)
+        this.xVelocity =  arrowSpeed * xSign * Math.cos(angle)
+        this.yVelocity =  arrowSpeed * xSign * Math.sin(angle)
 
         
     }
@@ -37,6 +37,10 @@ class Projectile extends Sprite{
 
         
         this.draw()
+
+        // for(let i = 0; i < currentWorld.getCurrentLevel().currentRoom.EnemyList.length; i++) {
+        //     console.log(i)
+        // }
 
     }
     

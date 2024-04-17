@@ -4,11 +4,12 @@ class World{
     }) {
         this.levelList = levelList
 
-        this.currentLevel = 1;
+        this.currentLevel = 0;
     }
 
     load() {
         this.levelList[this.currentLevel].update()
+       
     }
 
     getCurrentLevel() {

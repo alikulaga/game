@@ -40,4 +40,20 @@ class Sprite {
     update() {
         this.draw();
     }
+
+
+    checkWalls() {
+        for(let i = 0; i < currentWorld.getCurrentLevel().currentRoom.WallList.length; i++) {
+            if (currentWorld.getCurrentLevel().currentRoom.WallList[i] != null) {
+                var collisionDirection = currentWorld.getCurrentLevel().currentRoom.WallList[i].colliding(this.position, this.width(), this.height(), this.velocity)
+
+                if(collisionDirection == 1) {
+                    this.velocity.x = 0; 
+                } 
+                if (collisionDirection == 2) {
+                    this.velocity.y = 0;
+                }
+            }
+        }
+    }
 }

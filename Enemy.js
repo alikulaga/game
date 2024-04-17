@@ -24,23 +24,7 @@ class Enemy extends Sprite{
         this.strength = 1;
     }
 
-
-    update() {
-        this.draw();
-        this.position.x += this.velocity.x;
-        this.position.y += this.velocity.y;
-        this.setVelocities();
-
-        if (!this.attacking) {
-            this.checkHit();
-        }
-        
-       
-    }
-
-
-    setVelocities() {
-   
+    follow() {
         var Xdistance = ((player.position.x) - this.position.x)
         var Ydistance = ((player.position.y) - this.position.y)
         if (Xdistance < .2 && Xdistance > -.2) {
@@ -52,18 +36,15 @@ class Enemy extends Sprite{
             this.fixAngles = false;
             this.angle = Math.atan((Ydistance / Xdistance))
             this.knockbackSpeed = 0;
-            this.image.src = "./img/Goblin.png"
+            this.image.src = this.imageNormal
         } else {
             this.knockbackSpeed -= .3;
-            this.image.src = "./img/GoblinHurt.png"
+            this.image.src = this.imageHurt
         }
        
         var sign = Math.abs(Xdistance) / Xdistance;
         var vertSign = 1;
        
-        // if (Math.abs(this.position.x - player.position.x) < 10 && Math.abs(this.position.y - player.position.y < 10) {
-        //     player.hit = true;
-        // }
        
        
         if(
@@ -130,51 +111,11 @@ class Enemy extends Sprite{
         this.checkWalls();
 
         if (this.health < 1) {
-            this.image.src = "./img/GoblinDead.png"  
+            this.image.src = this.imageDead  
             this.velocity.x = 0
             this.velocity.y = 0
         }
     }
-
-    checkWalls() {
-        for(let i = 0; i < currentWorld.getCurrentLevel().currentRoom.WallList.length; i++) {
-            if (currentWorld.getCurrentLevel().currentRoom.WallList[i] != null) {
-                var collisionDirection = currentWorld.getCurrentLevel().currentRoom.WallList[i].colliding(this.position, this.width(), this.height(), this.velocity)
-
-                if(collisionDirection == 1) {
-                    this.velocity.x = 0; 
-                } 
-                if (collisionDirection == 2) {
-                    this.velocity.y = 0;
-                }
-            }
-        }
-    }
-
-    checkHit() {
-        var playerHitBoxX = player.position.x - (player.width() / 10)
-        var playerHitBoxWidth = player.width() * 12 / 10
-        var playerHitBoxY = player.position.y - (player.height() / 10)
-        var playerHitBoxHeight = player.height() * 12 / 10
-
-        var centerX = this.position.x + (this.width() / 2)
-        var centerY = this.position.y + (this.height() / 2)
-
-
-        if (centerX > playerHitBoxX &&
-            centerX < playerHitBoxX + playerHitBoxWidth &&
-            centerY > playerHitBoxY &&
-            centerY < playerHitBoxY + playerHitBoxHeight) {
-                this.attacking = true;
-                player.hit = true;
-
-                setTimeout(() => {
-                    this.attacking = false;
-                }, 400
-                )
-            }
-    }
-
     
 }
 
