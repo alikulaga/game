@@ -5,12 +5,9 @@ room1_1_2 = new Room({
         northBorder,  
 
         //Left wall
-        new Wall({
+        new BrickWall({
             position:{x: 0, y: 0},
-            imageSrc: "./img/Wall.png",
-            scale: 1,
-            width: 25,
-            height: 300
+            endPosition:{x: 25, y: 300}
         }),
         new Wall({
             position:{x: 0, y: 450},

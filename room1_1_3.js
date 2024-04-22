@@ -54,29 +54,12 @@ room1_1_3 = new Room({
 
 
     EnemyList: [
-        new Enemy({
+        new Goblin({
             position:{x:400,  y: 50},
-   
-        velocity:
-        {x: 0, y: 0},
-   
-        speed: enemySpeed,
-   
-        imageSrc: "./img/Goblin.png",
-   
-        scale: .15
         }),
-        new Enemy({
+
+        new Goblin({
             position:{x:800,  y: 50},
-   
-        velocity:
-        {x: 0, y: 0},
-   
-        speed: enemySpeed,
-   
-        imageSrc: "./img/Goblin.png",
-   
-        scale: .15
         })
     ],
 

@@ -31,7 +31,6 @@ class Goblin extends Enemy {
         this.position.y += this.velocity.y;
         this.setVelocities();
 
-        console.log("blah")
 
         
         

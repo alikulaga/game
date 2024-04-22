@@ -17,8 +17,6 @@ class Projectile extends Sprite{
         var yDist = this.targetPosition.y - this.position.y
         var xDist = this.targetPosition.x - this.position.x
 
-        console.log(yDist) 
-        console.log(xDist)
         var ySign = Math.sign(yDist);
         var xSign = Math.sign(xDist);
 

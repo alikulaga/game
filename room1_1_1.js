@@ -7,36 +7,26 @@ room1_1_1 = new Room({
         westBorder,
 
         //Bottom Wall
-        new Wall({
+        new BrickWall({
             position:{x: 0, y: 795},
-            imageSrc: "./img/Wall.png",
-            scale: 1,
-            width: 500,
-            height: 25
+            endPosition:{x:500, y: 820}
         }),
 
-        new Wall({
+        new BrickWall({
             position:{x: 700, y: 795},
-            imageSrc: "./img/Wall.png",
-            scale: 1,
-            width: 900,
-            height: 25
+            endPosition:{x:1600, y: 820}
         }),
 
         //Right Wall
-        new Wall({
+        new BrickWall({
             position:{x: 1575, y: 0},
-            imageSrc: "./img/Wall.png",
-            scale: 1,
-            width: 25,
-            height: 300
+            endPosition:{x:1600, y: 300}
         }),
-        new Wall({
+
+        
+        new BrickWall({
             position:{x: 1575, y: 450},
-            imageSrc: "./img/Wall.png",
-            scale: 1,
-            width: 25,
-            height: 500
+            endPosition:{x: 1600, y: 820}
         }),
     ],
 

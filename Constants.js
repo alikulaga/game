@@ -17,17 +17,6 @@ const enemySpeed = 3;
 const gameBottom = canvas.height - 80;
 
 
-
-
-
-
-
-
-
-
-
-
-
 //Which keys are currently pressed
 const keys = {
     a: {pressed: false},
@@ -78,35 +67,23 @@ const weapon = new Weapon ({
     scale: .15
 })
 
-const northBorder = new Wall({
+const northBorder = new BrickWall({
     position:{x: 0, y: 0},
-    imageSrc: "./img/Wall.png",
-    scale: 1,
-    width: 2500,
-    height: 25
+    endPosition:{x: 2500, y: 25}
 })
 
-const eastBorder = new Wall({
+const eastBorder = new BrickWall({
     position:{x: 1575, y: 0},
-    imageSrc: "./img/Wall.png",
-    scale: 1,
-    width: 25,
-    height: 1000
+    endPosition:{x: 1600, y: 1000}
 })
 
-const southBorder = new Wall({
+const southBorder = new BrickWall({
     position:{x: 0, y: 795},
-    imageSrc: "./img/Wall.png",
-    scale: 1,
-    width: 2500,
-    height: 25
+    endPosition:{x: 2500, y: 820}
 })
 
-const westBorder = new Wall({
+const westBorder = new BrickWall({
     position:{x: 0, y: 0},
-    imageSrc: "./img/Wall.png",
-    scale: 1,
-    width: 25,
-    height: 1000
+    endPosition:{x: 25, y: 1000}
 })
 
