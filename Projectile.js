@@ -36,9 +36,8 @@ class Projectile extends Sprite{
         
         this.draw()
 
-        // for(let i = 0; i < currentWorld.getCurrentLevel().currentRoom.EnemyList.length; i++) {
-        //     console.log(i)
-        // }
+        
+
 
     }
     

@@ -9,12 +9,9 @@ room1_1_2 = new Room({
             position:{x: 0, y: 0},
             endPosition:{x: 25, y: 300}
         }),
-        new Wall({
+        new BrickWall({
             position:{x: 0, y: 450},
-            imageSrc: "./img/Wall.png",
-            scale: 1,
-            width: 25,
-            height: 500
+            endPosition:{x: 25, y: 950}
         }),
 
         //Bottom wall
@@ -24,12 +21,9 @@ room1_1_2 = new Room({
         eastBorder,
 
         //Middle wall
-        new Wall({
+        new BrickWall({
             position:{x: 500, y: 400},
-            imageSrc: "./img/Wall.png",
-            scale: 1,
-            width: 400,
-            height: 500
+            endPosition:{x: 900, y: 900}
         })    
     ],
 

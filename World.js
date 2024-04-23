@@ -16,4 +16,12 @@ class World{
         return this.levelList[this.currentLevel]
     }
 
+    getCurrentRoom() {
+        return this.getCurrentLevel().currentRoom
+    }
+
+    getCurrentWallList() {
+        return this.getCurrentRoom().WallList
+    }
+
 }

@@ -24,6 +24,7 @@ class Skeleton extends Enemy {
         this.strength = 1;
         this.firing = true;
         this.arrow = null;
+        this.speed = 2
     }
 
     update() {

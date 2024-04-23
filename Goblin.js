@@ -17,11 +17,12 @@ class Goblin extends Enemy {
 
         this.attacking = false;
         this.hit = false;
-        this.health = 100;
+        this.health = 100000;
         this.angle = 0;
         this.knockbackSpeed;
         this.fixAngles = false;
         this.strength = 1;
+        this.speed = enemySpeed
     }
 
 

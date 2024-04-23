@@ -10,19 +10,13 @@ room1_2_1 = new Room ({
         southBorder,
 
         //Right Wall
-        new Wall({
+        new BrickWall({
             position:{x: 1575, y: 0},
-            imageSrc: "./img/Wall.png",
-            scale: 1,
-            width: 25,
-            height: 600
+            endPosition:{x: 1600, y: 900}
         }),
-        new Wall({
+        new BrickWall({
             position:{x: 1575, y: 750},
-            imageSrc: "./img/Wall.png",
-            scale: 1,
-            width: 25,
-            height: 200
+            endPosition:{x: 1600, y: 950}
         }),
     ],
 

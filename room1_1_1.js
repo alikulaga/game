@@ -1,3 +1,9 @@
+var listex = []
+for (let i = 0; i < 1; i++) {
+    listex[i] = new Goblin ({
+        position:{x: 400*Math.random() + 400, y: 300 * Math.random() + 300}
+    })
+}
 room1_1_1 = new Room({
     WallList: [
         //Top Wall
@@ -30,24 +36,8 @@ room1_1_1 = new Room({
         }),
     ],
 
-
-    EnemyList: [
-        new Goblin({
-            position:{x: 800, y: 500}
-        }),
-
-        new Goblin({
-            position:{x: 300, y: 300}
-        }),
-
-        new Skeleton({
-            position:{x: 400, y: 600}
-        }),
-
-        new Skeleton({
-            position:{x: 500, y: 400}
-        })
-    ],
+    
+    EnemyList: listex,
 
     doorIndex: null,
 

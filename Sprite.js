@@ -43,7 +43,7 @@ class Sprite {
 
 
     checkWalls() {
-        for(let i = 0; i < currentWorld.getCurrentLevel().currentRoom.WallList.length; i++) {
+        for(let i = 0; i < currentWorld.getCurrentWallList().length; i++) {
             if (currentWorld.getCurrentLevel().currentRoom.WallList[i] != null) {
                 var collisionDirection = currentWorld.getCurrentLevel().currentRoom.WallList[i].colliding(this.position, this.width(), this.height(), this.velocity)
 
