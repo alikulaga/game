@@ -20,4 +20,3 @@ let attackY;
 
 let currentRoom;
 
-let projctileList;

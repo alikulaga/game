@@ -118,5 +118,13 @@ class Player extends Sprite{
         this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
        
+        if (this.projectileHit()) {
+            
+            if (this.health > 30) {
+                this.health -=30
+            } else {
+                this.health = 0
+            }
+        }
     }
 }

@@ -31,8 +31,15 @@ class Enemy extends Sprite{
         var YSign = Math.sign(YDistance)
 
         this.angle = Math.atan(XDistance / YDistance)
-        console.log(this.angle)
+        //console.log(this.angle * 180/Math.PI)
+
+        var YVel = Math.abs(Math.cos(this.angle)) * YSign * 2
+        var XVel = Math.abs(Math.sin(this.angle)) * XSign * 2
+
+        this.velocity.x = XVel
+        this.velocity.y = YVel
     }
+
 }
 
 

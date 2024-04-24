@@ -25,6 +25,8 @@ class Skeleton extends Enemy {
         this.firing = true;
         this.arrow = null;
         this.speed = 2
+
+        this.index = 0
     }
 
     update() {
@@ -68,8 +70,12 @@ class Skeleton extends Enemy {
             targetPosition: {x: player.position.x, y: player.position.y}
         })
 
+        this.index = currentWorld.getCurrentRoom().projectileList.length
+        currentWorld.getCurrentRoom().projectileList[this.index] = this.arrow
+
         this.firing = false;
         setTimeout(() => {
+            currentWorld.getCurrentRoom().projectileList[this.index] = null
             this.firing = true;
         }, 2000)
 

@@ -9,6 +9,7 @@ class Room {
     }) {
         this.WallList = WallList
         this.EnemyList = EnemyList
+        this.projectileList = []
 
         this.RoomsListNESW = RoomsListNESW 
 

@@ -60,6 +60,9 @@ const player = new Player({
 })
 
 
+
+
+
 //Weapon, always tracks to player
 const weapon = new Weapon ({
     position: {x: player.position.x - 20, y: player.position.y - 20},
