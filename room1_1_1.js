@@ -1,14 +1,12 @@
 var listex = []
-listex[0] = new Skeleton({position: {x: 400, y: 650}})
-listex[1] = new Skeleton({position: {x: 800, y: 650}})
-listex[2] = new Skeleton({position: {x: 100, y: 650}})
-listex[3] = new Skeleton({position: {x: 500, y: 650}})
+// listex[0] = new Skeleton({position: {x: 500, y: 300}})
 
-// for (let i = 1; i < 2; i++) {
-//     listex[i] = new Goblin ({
-//         position:{x: 400*Math.random() + 400, y: 300 * Math.random() + 300}
-//     })
-// }
+
+for (let i = 0; i < 100; i++) {
+    listex[i] = new Goblin ({
+        position:{x: 400*Math.random() + 400, y: 300 * Math.random() + 300}
+    })
+}
 room1_1_1 = new Room({
     WallList: [
         //Top Wall

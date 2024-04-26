@@ -22,135 +22,74 @@ class Enemy extends Sprite{
         this.knockbackSpeed;
         this.fixAngles = false;
         this.strength = 1;
+
+        this.XSign = 1
+        this.YSign = 1
     }
 
     follow() {
         var XDistance = player.position.x - this.position.x
         var YDistance = player.position.y - this.position.y
-        var XSign = Math.sign(XDistance)
-        var YSign = Math.sign(YDistance)
 
-        this.angle = Math.atan(XDistance / YDistance)
-        //console.log(this.angle * 180/Math.PI)
+        this.checkHit()
 
-        var YVel = Math.abs(Math.cos(this.angle)) * YSign * 2
-        var XVel = Math.abs(Math.sin(this.angle)) * XSign * 2
+        if (this.hit) {
+            this.image.src = this.imageHurt
 
-        this.velocity.x = XVel
-        this.velocity.y = YVel
+            this.knockbackSpeed += 0.05
+
+        } else {
+            this.image.src = this.imageNormal
+            this.angle = Math.atan(XDistance / YDistance)
+            console.log(this.angle * 180/Math.PI)
+
+            this.XSign = Math.sign(XDistance)
+            this.YSign = Math.sign(YDistance)
+
+            this.knockbackSpeed = 1
+        }
+
+
+        var YVel = Math.abs(Math.cos(this.angle)) * this.YSign * 2
+        var XVel = Math.abs(Math.sin(this.angle)) * this.XSign * 2
+
+        
+
+        this.velocity.x = XVel * this.knockbackSpeed
+        this.velocity.y = YVel * this.knockbackSpeed
+
+        this.checkWalls()
     }
 
-}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// var Xdistance = ((player.position.x) - this.position.x)
-        // var Ydistance = ((player.position.y) - this.position.y)
-        // if (Xdistance < .2 && Xdistance > -.2) {
-        //     Xdistance = .2;
-        // }
-
-
-        // if (!this.hit) {
-        //     this.fixAngles = false;
-        //     this.angle = Math.atan((Ydistance / Xdistance))
-        //     this.knockbackSpeed = 0;
-        //     this.image.src = this.imageNormal
-        // } else {
-        //     this.knockbackSpeed -= .3;
-        //     this.image.src = this.imageHurt
-        // }
-       
-        // var sign = Math.abs(Xdistance) / Xdistance;
-        // var vertSign = 1;
-       
-       
-       
-        // if(
-        //     //Checks if player's attack is inside the enemy's hitbox
-        //     (player.attacking &&
-        //     this.position.x < attackX &&
-        //     this.position.x + (this.image.width * this.scale) > attackX &&
-        //     this.position.y < attackY &&
-        //     this.position.y + (this.image.height * this.scale) > attackY)
-        // ) {
-           
+    checkHit() {
+        //Checks if player's attack is inside the enemy's hitbox
+        if (player.attacking && !this.hit &&
+        this.position.x < attackX &&
+        this.position.x + (this.image.width * this.scale) > attackX &&
+        this.position.y < attackY &&
+        this.position.y + (this.image.height * this.scale) > attackY) {
             
-        //     //updates hit
-        //     this.hit = true;
+            
+            
+            this.hit = true
+            this.randomizeAngle()
+            this.knockbackSpeed = -2
 
-        //     if(Math.abs(this.angle) > (Math.PI / 2 - 0.1)) {
-               
-        //         this.angle += (this.angle / Math.abs(this.angle)) * .2
-               
-        //         sign = -sign
+            setTimeout(() => {
+                this.hit = false;
+            }, 400)
 
-        //         this.fixAngles = true;
+        } 
+    }
 
-        //     }
+    randomizeAngle() {
+        var randomJump = (Math.random()* 60) - 30
 
-        //     //Randomizes knockback
-        //     this.angle += Math.PI / 2
-        //     this.angle += Math.random() * Math.PI
+        this.angle += randomJump;
 
+        console.log(this.angle)
 
-        //     //Knockback is reversed
-        //     sign = -sign
-       
-       
-        //     //Health is decreased
-        //     this.health -= playerStrength;
-       
-        //     //Updates hit to false after 400 milliseconds
-        //     setTimeout(() => {
-        //         this.hit = false;
-        //     }, 400)
-           
-        //     //Knockback speed is increased from zero
-        //     this.knockbackSpeed = 5
-        // }
-       
-        // if (this.fixAngles) {
-        //     vertSign = -Math.sin(this.angle) / Math.abs(Math.sin(this.angle)) * Ydistance / Math.abs(Ydistance)
-        //     sign = -Math.cos(this.angle) / Math.abs(Math.cos(this.angle)) * Xdistance / Math.abs(Xdistance)
-        // } else {
-        //     vertSign = sign
-        // }
-       
-        // this.velocity.x = 10
-
-
-        // this.velocity.x = this.speed * sign * (Math.cos(this.angle)) + (sign * this.knockbackSpeed * Math.cos(this.angle));
-       
-        // this.velocity.y = this.speed * vertSign * Math.sin(this.angle) + (vertSign * this.knockbackSpeed * Math.sin(this.angle));  
-   
-        // this.checkWalls();
-
-        // if (this.health < 1) {
-        //     this.image.src = this.imageDead  
-        //     this.velocity.x = 0
-        //     this.velocity.y = 0
-        // }
-
-
-
-
-
-
-
-
+    }
+}
