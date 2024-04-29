@@ -50,7 +50,7 @@ class Skeleton extends Enemy {
         var yDistance = player.position.y - this.position.y
         var totalDistance = Math.sqrt(Math.pow(xDistance, 2) + Math.pow(yDistance, 2))
 
-        if (totalDistance < 200) {
+        if (totalDistance < 200 && !this.hit) {
             this.velocity.x = -this.velocity.x
             this.velocity.y = -this.velocity.y
         } else if(totalDistance > 195 && totalDistance < 205) {

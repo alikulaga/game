@@ -8,8 +8,6 @@ function animate() {
    
     currentWorld.load();
     
-    
-    player.attacking = false;
 
     player.velocity.x = 0;
     player.velocity.y = 0;
@@ -61,96 +59,8 @@ if (!gameover) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 window.addEventListener("keydown", (event) =>  {
     //console.log(event);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

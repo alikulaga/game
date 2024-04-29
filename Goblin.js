@@ -17,7 +17,7 @@ class Goblin extends Enemy {
 
         this.attacking = false;
         this.hit = false;
-        this.health = 100000;
+        this.health = 100;
         this.angle = 0;
         this.knockbackSpeed;
         this.fixAngles = false;
@@ -31,6 +31,8 @@ class Goblin extends Enemy {
         this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
         this.setVelocities();
+
+        this.checkIfHitPlayer()
     }
 
 
@@ -38,5 +40,8 @@ class Goblin extends Enemy {
         this.follow()
     }
 
+    checkIfHitPlayer() {
+        
+    }
     
 }

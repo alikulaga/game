@@ -16,12 +16,6 @@ class Player extends Sprite{
         })
 
 
-
-
-
-
-
-
         this.velocity = velocity;
         this.speed = speed;
         this.health = health
@@ -41,8 +35,6 @@ class Player extends Sprite{
         var centerY = this.position.y + (this.height() / 2)
 
 
-
-
         var xDistance = mouseX - centerX;
         var yDistance = mouseY - centerY;
  
@@ -50,13 +42,17 @@ class Player extends Sprite{
         var sign = -Math.abs(xDistance) / xDistance
 
 
-
-
         attackX = centerX - (sign * 80 * Math.cos(angle) + 1)
         attackY = centerY - (sign * 80 * Math.sin(angle) + 1)
 
+        setTimeout(() => {
+            attackX = centerX;
+            attackY = centerY
+        }, 50)
 
-
+        setTimeout(() => {
+            this.attacking = false;
+        }, 100)
 
         //Fills small rectangle to see where attack landed (temporary)
         c.fillRect(attackX, attackY, 10, 10)
@@ -75,14 +71,14 @@ class Player extends Sprite{
         this.draw();
 
 
-
-
         if (this.hit) {
             this.image.src = "./img/PlayerHurt.png"
             setTimeout(() => {
                 this.image.src = "./img/Player.png";
             }, 100
             )
+
+
             if (player.health > 40) {
                 this.health-= 40;
             } else {
@@ -101,9 +97,6 @@ class Player extends Sprite{
         //Updates the healthbar to match player's health
         document.querySelector('#HealthBar').style.width = this.health + 'px';
 
-       
-   
-   
        
        
         if(this.attacking) {

@@ -59,6 +59,12 @@ class Enemy extends Sprite{
         this.velocity.y = YVel * this.knockbackSpeed
 
         this.checkWalls()
+
+        if (this.health == 0) {
+            this.velocity.x = 0
+            this.velocity.y = 0
+            this.image.src = this.imageDead
+        }
     }
 
 
@@ -71,6 +77,7 @@ class Enemy extends Sprite{
         this.position.y < attackY &&
         this.position.y + (this.image.height * this.scale) > attackY) {
             
+            this.health -= 20
             
             
             this.hit = true

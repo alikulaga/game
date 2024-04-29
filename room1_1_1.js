@@ -2,9 +2,9 @@ var listex = []
 // listex[0] = new Skeleton({position: {x: 500, y: 300}})
 
 
-for (let i = 0; i < 100; i++) {
+for (let i = 0; i < 10; i++) {
     listex[i] = new Goblin ({
-        position:{x: 400*Math.random() + 400, y: 300 * Math.random() + 300}
+        position:{x: 800*Math.random() + 40, y: 300 * Math.random() + 300}
     })
 }
 room1_1_1 = new Room({
