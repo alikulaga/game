@@ -41,7 +41,7 @@ class Enemy extends Sprite{
         } else {
             this.image.src = this.imageNormal
             this.angle = Math.atan(XDistance / YDistance)
-            console.log(this.angle * 180/Math.PI)
+            
 
             this.XSign = Math.sign(XDistance)
             this.YSign = Math.sign(YDistance)
@@ -96,7 +96,8 @@ class Enemy extends Sprite{
 
         this.angle += randomJump;
 
-        console.log(this.angle)
-
+    
     }
+
+    
 }

@@ -35,7 +35,7 @@ class Skeleton extends Enemy {
         this.position.y += this.velocity.y
         this.draw();
 
-        if (this.firing) {
+        if (this.firing && this.health != 0) {
             this.fireArrow()
         }
 

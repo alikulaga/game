@@ -9,42 +9,40 @@ function animate() {
     currentWorld.load();
     
 
-    player.velocity.x = 0;
-    player.velocity.y = 0;
+    
 
 
+    if (!player.knocked) {
+
+        player.velocity.x = 0;
+        player.velocity.y = 0;
+
+        if (keys.a.pressed && lastKeyX == 'a') {
 
 
+            player.velocity.x = - playerSpeed;
+        } else if(keys.d.pressed && lastKeyX == 'd') {
+            player.velocity.x = playerSpeed;
+        }
+    
+    
+    
+    
+        if (keys.w.pressed && lastKeyY == 'w') {
+            player.velocity.y = - playerSpeed;
+        } else if(keys.s.pressed && lastKeyY == 's') {
+            player.velocity.y = playerSpeed;
+        }
+    
+    
+        if (player.velocity.x != 0 && player.velocity.y != 0) {
+            var diagonalVelocity = (Math.sqrt(2) / 2.0) * player.speed;
+            player.velocity.x = (diagonalVelocity * (player.velocity.x / Math.abs(player.velocity.x)));
+            player.velocity.y = (diagonalVelocity * (player.velocity.y / Math.abs(player.velocity.y)));
+        }
 
-
-    if (keys.a.pressed && lastKeyX == 'a') {
-
-
-        player.velocity.x = - playerSpeed;
-    } else if(keys.d.pressed && lastKeyX == 'd') {
-        player.velocity.x = playerSpeed;
     }
-
-
-
-
-
-
-    if (keys.w.pressed && lastKeyY == 'w') {
-        player.velocity.y = - playerSpeed;
-    } else if(keys.s.pressed && lastKeyY == 's') {
-        player.velocity.y = playerSpeed;
-    }
-
-
-
-
-
-    if (player.velocity.x != 0 && player.velocity.y != 0) {
-        var diagonalVelocity = (Math.sqrt(2) / 2.0) * player.speed;
-        player.velocity.x = (diagonalVelocity * (player.velocity.x / Math.abs(player.velocity.x)));
-        player.velocity.y = (diagonalVelocity * (player.velocity.y / Math.abs(player.velocity.y)));
-    }
+    
    
 }
 

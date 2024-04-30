@@ -19,13 +19,17 @@ class Player extends Sprite{
         this.velocity = velocity;
         this.speed = speed;
         this.health = health
-
+        
+        this.imageNormal = "./img/Player.png"
+        this.imageHurt = "./img/PlayerHurt.png"
 
 
 
         //Useful variables for later on
         this.attacking = false;
         this.hit = false;
+        this.invincible = false;
+        this.knocked = false;
     }
 
 
@@ -44,11 +48,6 @@ class Player extends Sprite{
 
         attackX = centerX - (sign * 80 * Math.cos(angle) + 1)
         attackY = centerY - (sign * 80 * Math.sin(angle) + 1)
-
-        setTimeout(() => {
-            attackX = centerX;
-            attackY = centerY
-        }, 50)
 
         setTimeout(() => {
             this.attacking = false;
@@ -75,8 +74,7 @@ class Player extends Sprite{
             this.image.src = "./img/PlayerHurt.png"
             setTimeout(() => {
                 this.image.src = "./img/Player.png";
-            }, 100
-            )
+            }, 100)
 
 
             if (player.health > 40) {
@@ -103,11 +101,12 @@ class Player extends Sprite{
             this.setAttackLocation()
         }
 
-
-
-
         this.checkWalls()
 
+        if (this.knocked) {
+            this.velocity.x -= Math.sign(this.velocity.x) * .4
+            this.velocity.y -= Math.sign(this.velocity.y) * .4
+        }
         this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
        
@@ -119,5 +118,19 @@ class Player extends Sprite{
                 this.health = 0
             }
         }
+    }
+
+
+    knockback({Xattack, Yattack}) {
+        this.knocked = true
+        setTimeout(() => {
+            this.knocked = false;
+        }, 50)
+
+
+       
+        this.velocity.x = -7 * Math.sign(Xattack - this.position.x)
+        this.velocity.y = -7 * Math.sign(Yattack - this.position.y)
+        
     }
 }
