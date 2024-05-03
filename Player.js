@@ -30,6 +30,8 @@ class Player extends Sprite{
         this.hit = false;
         this.invincible = false;
         this.knocked = false;
+
+        this.projectileList = [null]
     }
 
 
@@ -80,7 +82,7 @@ class Player extends Sprite{
             if (player.health > 40) {
                 this.health-= 40;
             } else {
-                this.health = 0;
+                this.health = 0
             }
             
             
@@ -107,24 +109,44 @@ class Player extends Sprite{
             this.velocity.x -= Math.sign(this.velocity.x) * .4
             this.velocity.y -= Math.sign(this.velocity.y) * .4
         }
-        this.position.x += this.velocity.x;
+        this.position.x += this.velocity.x
         this.position.y += this.velocity.y;
-       
-        if (this.projectileHit()) {
-            
-            if (this.health > 30) {
-                this.health -=30
-            } else {
-                this.health = 0
+        
+        var enList = currentWorld.getCurrentRoom().EnemyList
+
+
+        for (let i = 0; i < enList.length; i++) {
+            if (enList[i] instanceof Skeleton) {
+                if (enList[i].arrow != null) {
+                    if (this.projectileHit(enList[i].arrow)) {
+
+                        // this.image.src = imageHurt
+                        // setTimeout(() => {
+                        //     this.image.src = this.imageNormal;
+                        // }, 400)
+                        if (this.health > 30) {
+                            this.knockback({Xattack: enList[i].arrow.position.x, Yattack: enList[i].arrow.position.y})
+                        
+                            enList[i].arrow = null
+                            this.health -=30
+                        } else {
+                            this.health = 0
+                        }
+
+                    }
+                }
             }
         }
+
+        
+        this.updateArrows()
     }
 
 
     knockback({Xattack, Yattack}) {
         this.knocked = true
         setTimeout(() => {
-            this.knocked = false;
+            this.knocked = false
         }, 50)
 
 
@@ -132,5 +154,46 @@ class Player extends Sprite{
         this.velocity.x = -7 * Math.sign(Xattack - this.position.x)
         this.velocity.y = -7 * Math.sign(Yattack - this.position.y)
         
+    }
+
+    fireArrow() {
+        var index
+        
+        for (let i = 0; i < this.projectileList.length; i++) {
+            if (this.projectileList[i] == null) {
+                index = i
+                console.log(index)
+                break;
+                
+            }
+        }
+        this.projectileList[index] = new Projectile({
+            position: {x: this.position.x, y: this.position.y}, 
+            velocity:{x: 0, y: 0},
+            imageSrc: "./img/RedBall.png",
+            scale: .05,
+            targetPosition: {x: mouseX, y: mouseY}
+        })
+        if (this.projectileList.length == index + 1) {
+            this.projectileList[index + 1] = null
+        }
+        
+        currentWorld.paused = true;
+    }
+
+    updateArrows() {
+        for (let i = 0; i < this.projectileList.length; i++) {
+            if(this.projectileList[i] != null) {
+                this.projectileList[i].update()
+                
+                if (this.projectileList[i].position.x < 0 || this.projectileList[i].position.y < 0) {
+
+
+                    this.projectileList[i] = null
+                    
+                }
+                
+            }
+        }
     }
 }

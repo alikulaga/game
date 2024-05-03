@@ -33,6 +33,7 @@ class Goblin extends Enemy {
         this.setVelocities();
 
         this.HitPlayer()
+        //this.checkProjectiles()
     }
 
 
@@ -57,5 +58,8 @@ class Goblin extends Enemy {
         }
         
     }
-    
+
+    // checkProjectiles() {
+        
+    // }
 }

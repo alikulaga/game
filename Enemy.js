@@ -27,6 +27,7 @@ class Enemy extends Sprite{
         this.YSign = 1
     }
 
+   
     follow() {
         var XDistance = player.position.x - this.position.x
         var YDistance = player.position.y - this.position.y
@@ -65,6 +66,11 @@ class Enemy extends Sprite{
             this.velocity.y = 0
             this.image.src = this.imageDead
         }
+
+        if (currentWorld.paused) {
+            this.velocity.x = 0
+            this.velocity.y = 0
+        }
     }
 
 
@@ -89,6 +95,23 @@ class Enemy extends Sprite{
             }, 400)
 
         } 
+
+        for (let i = 0; i < player.projectileList.length; i++) {
+            if (player.projectileList[i] != null) {
+                if (this.projectileHit(player.projectileList[i])) {
+
+                    player.projectileList[i] = null
+
+                    this.health -= 5
+                    this.randomizeAngle()
+                    this.knockbackSpeed = -2
+                    this.hit = true;
+                    setTimeout(() => {
+                        this.hit = false;
+                    }, 400)
+                }
+            }
+        }
     }
 
     randomizeAngle() {

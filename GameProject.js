@@ -42,6 +42,11 @@ function animate() {
         }
 
     }
+
+    if (currentWorld.paused) {
+        player.velocity.x = 0;
+        player.velocity.y = 0;
+    }
     
    
 }
@@ -80,7 +85,8 @@ window.addEventListener("keydown", (event) =>  {
             lastKeyY = 's';
         break;
         case ' ':
-            player.attacking = true;
+            if (!currentWorld.paused)
+            player.fireArrow();
         break;
        
     }
@@ -136,12 +142,14 @@ document.addEventListener("mousedown", (event) => {
     //console.log(event);
     event.preventDefault()
 
-
-    if (event.button == 0) {
-        player.attacking = true;
+    if (!currentWorld.paused) {
+        if (event.button == 0) {
+            player.attacking = true;
+        }
+    
+        if (event.button == 2) {
+            
+        }
     }
-
-    if (event.button == 2) {
-        console.log("Hello")
-    }
+    
 })

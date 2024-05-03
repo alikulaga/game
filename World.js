@@ -5,6 +5,8 @@ class World{
         this.levelList = levelList
 
         this.currentLevel = 0;
+
+        this.paused = false
     }
 
     load() {

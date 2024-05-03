@@ -57,31 +57,25 @@ class Sprite {
         }
     }
 
-    projectileHit() {
-        var enList = currentWorld.getCurrentRoom().EnemyList
-        for (let i = 0; i < enList.length; i++) {
-            if (enList[i]instanceof(Skeleton)) {
-                if (enList[i].arrow != null) {
+    projectileHit(arrow) {
+        var xHitBox = arrow.position.x
+        var yHitBox = arrow.position.y
 
-                
-                    var xHitBox = enList[i].arrow.position.x
-                    var yHitBox = enList[i].arrow.position.y
+        var xHitBoxend = xHitBox + arrow.width()
+        var yHitBoxend = yHitBox + arrow.height()
 
-                    var xHitBoxend = xHitBox + enList[i].arrow.width()
-                    var yHitBoxend = yHitBox + enList[i].arrow.height()
-
-                    if((xHitBox > this.position.x && xHitBox < this.position.x + this.width() ||
-                        xHitBoxend > this.position.x && xHitBoxend < this.position.x + this.width()) && (
-                        yHitBox > this.position.y && yHitBox < this.position.y + this.height() ||
-                        yHitBoxend > this.position.y && yHitBoxend < this.position.y + this.height()
-                        )) {
-                            enList[i].arrow = null
-                            return true;
-                    } else {
-                        return false
-                    }
-                }
-            }
+        if((xHitBox > this.position.x && xHitBox < this.position.x + this.width() ||
+            xHitBoxend > this.position.x && xHitBoxend < this.position.x + this.width()) && (
+            yHitBox > this.position.y && yHitBox < this.position.y + this.height() ||
+            yHitBoxend > this.position.y && yHitBoxend < this.position.y + this.height()
+        )) {
+            this.image.src = this.imageHurt
+            setTimeout(() => {
+                this.image.src = player.imageNormal
+            }, 350)
+            return true;
+        } else {
+            return false
         }
     }
 }
