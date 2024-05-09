@@ -33,9 +33,11 @@ class Room {
                 this.EnemyList[i].update();
                 
    
-   
+                
                 if (this.EnemyList[i].health < 1) {
                     setTimeout(() => {
+                        
+                        currentWorld.createNewCoin(500, 500)
                         this.EnemyList[i] = null;
                     }, 600)
                 }

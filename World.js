@@ -7,11 +7,13 @@ class World{
         this.currentLevel = 0;
 
         this.paused = false
+
+       
     }
 
     load() {
         this.levelList[this.currentLevel].update()
-       
+        
     }
 
     getCurrentLevel() {
@@ -25,6 +27,12 @@ class World{
     getCurrentWallList() {
         return this.getCurrentRoom().WallList
     }
+
+    getCurrentEnemyList() {
+        return this.getCurrentRoom().enemyList
+    }
+
+    
 
 }
 

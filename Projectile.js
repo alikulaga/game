@@ -30,6 +30,7 @@ class Projectile extends Sprite{
         
     }
     update() {
+        
         this.position.x += this.xVelocity
         this.position.y += this.yVelocity
 

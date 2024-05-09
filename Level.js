@@ -11,9 +11,9 @@ class Level {
 
     update() {
         this.background.update();
+        
         player.update();
         this.currentRoom.load();
-        
         weapon.update()
         
 

@@ -27,6 +27,8 @@ class Goblin extends Enemy {
 
 
     update() {
+
+        
         this.draw();
         this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
@@ -46,7 +48,7 @@ class Goblin extends Enemy {
         &&  this.position.y + this.height() - 5 > player.position.y && this.position.y + 5 < player.position.y + player.height()
         &&  !player.invincible) {
 
-            player.knockback({Xattack: this.position.x, Yattack: this.position.y})
+            
 
             player.health -= 20
             player.invincible = true

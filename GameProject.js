@@ -1,5 +1,7 @@
 var currentWorld = world1;
-
+var con = new Coin({
+    position: {x: 500, y: 500}
+})
 
 
 function animate() {
@@ -9,7 +11,7 @@ function animate() {
     currentWorld.load();
     
 
-    
+    con.update()
 
 
     if (!player.knocked) {
@@ -87,6 +89,7 @@ window.addEventListener("keydown", (event) =>  {
         case ' ':
             if (!currentWorld.paused)
             player.fireArrow();
+            
         break;
        
     }
