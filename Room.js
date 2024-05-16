@@ -10,6 +10,7 @@ class Room {
         this.WallList = WallList
         this.EnemyList = EnemyList
         this.projectileList = []
+        this.coinList = []
 
         this.RoomsListNESW = RoomsListNESW 
 
@@ -32,12 +33,17 @@ class Room {
    
                 this.EnemyList[i].update();
                 
-   
-                
-                if (this.EnemyList[i].health < 1) {
+                console.log(this.EnemyList[i].health)
+
+                var coinX = this.EnemyList[i].xPos()
+                var coinY = this.EnemyList[i].yPos()
+                if (this.EnemyList[i].isDead) {
+                    
+                    
+                    
+                    
                     setTimeout(() => {
-                        
-                        currentWorld.createNewCoin(500, 500)
+                        this.createNewCoin(coinX, coinY)
                         this.EnemyList[i] = null;
                     }, 600)
                 }
@@ -61,7 +67,25 @@ class Room {
             }
         }
 
+        for(let i = 0; i < this.coinList.length; i++) {
+            if (this.coinList[i] != null) {
+                this.coinList[i].update();
+                
+                if (coinList[i].isCollected) {
+                    coinList[i] = null
+                }
+            }
+        }
+
         
+    }
+
+    createNewCoin(x, y) {
+        for(let i = 0; i < this.coinList.length + 1; i++) {
+            if (this.coinList[i] == null) {
+                this.coinList[i] = new Coin({position: {x: x, y: y}})
+            }
+        }
     }
 }
 

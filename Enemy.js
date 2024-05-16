@@ -22,6 +22,7 @@ class Enemy extends Sprite{
         this.knockbackSpeed;
         this.fixAngles = false;
         this.strength = 1;
+        this.isDead = false;
 
         this.XSign = 1
         this.YSign = 1
@@ -61,10 +62,11 @@ class Enemy extends Sprite{
 
         this.checkWalls()
 
-        if (this.health == 0) {
+        if (this.health <= 0) {
             this.velocity.x = 0
             this.velocity.y = 0
             this.image.src = this.imageDead
+            this.isDead = true
         }
 
         if (currentWorld.paused) {

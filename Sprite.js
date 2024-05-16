@@ -78,5 +78,13 @@ class Sprite {
             return false
         }
     }
+
+    xPos() {
+        return this.position.x
+    }
+    
+    yPos() {
+        return this.position.y
+    }
 }
 

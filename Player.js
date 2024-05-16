@@ -162,7 +162,7 @@ class Player extends Sprite{
         for (let i = 0; i < this.projectileList.length; i++) {
             if (this.projectileList[i] == null) {
                 index = i
-                console.log(index)
+                //console.log(index)
                 break;
                 
             }
@@ -178,7 +178,7 @@ class Player extends Sprite{
             this.projectileList[index + 1] = null
         }
         
-        currentWorld.paused = true;
+        
     }
 
     updateArrows() {

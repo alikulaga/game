@@ -30,17 +30,23 @@ class Goblin extends Enemy {
 
         
         this.draw();
-        this.position.x += this.velocity.x;
-        this.position.y += this.velocity.y;
-        this.setVelocities();
+        
+        if (!currentWorld.paused) {
+            
+            this.setVelocities();
 
-        this.HitPlayer()
-        //this.checkProjectiles()
+            this.HitPlayer()
+            //this.checkProjectiles()
+        }
+        
     }
 
 
     setVelocities() {
+        this.position.x += this.velocity.x;
+        this.position.y += this.velocity.y;
         this.follow()
+
     }
 
     HitPlayer() {
