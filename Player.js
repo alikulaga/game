@@ -144,6 +144,7 @@ class Player extends Sprite{
 
 
     knockback({Xattack, Yattack}) {
+        console.log(Xattack)
         this.knocked = true
         setTimeout(() => {
             this.knocked = false
@@ -162,7 +163,7 @@ class Player extends Sprite{
         for (let i = 0; i < this.projectileList.length; i++) {
             if (this.projectileList[i] == null) {
                 index = i
-                //console.log(index)
+                
                 break;
                 
             }

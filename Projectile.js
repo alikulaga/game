@@ -27,6 +27,8 @@ class Projectile extends Sprite{
         this.xVelocity =  arrowSpeed * xSign * Math.cos(angle)
         this.yVelocity =  arrowSpeed * xSign * Math.sin(angle)
 
+        this.strength = 15
+
         
     }
     update() {

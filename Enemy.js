@@ -104,7 +104,7 @@ class Enemy extends Sprite{
 
                     player.projectileList[i] = null
 
-                    this.health -= 5
+                    this.health -= 50
                     this.randomizeAngle()
                     this.knockbackSpeed = -2
                     this.hit = true;

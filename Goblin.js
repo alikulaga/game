@@ -23,6 +23,8 @@ class Goblin extends Enemy {
         this.fixAngles = false;
         this.strength = 1;
         this.speed = enemySpeed
+
+        this.droppedLoot = false
     }
 
 
@@ -59,6 +61,7 @@ class Goblin extends Enemy {
             player.health -= 20
             player.invincible = true
             player.image.src = player.imageHurt
+            player.knockback({Xattack: this.position.x, Yattack: this.position.y})
             setTimeout(() => {
                 player.invincible = false;
                 player.image.src = player.imageNormal
@@ -67,7 +70,16 @@ class Goblin extends Enemy {
         
     }
 
-    // checkProjectiles() {
+    dropLoot() {
         
-    // }
+        var current = currentWorld.getCurrentRoom().coinList
+
+        while (current != null) {
+            current = current.next
+        }
+
+        current = new Node({value: new Coin({position:{x: this.position.x, y: this.position.y}}), next: null})
+        
+        this.droppedLoot = true
+    }
 }

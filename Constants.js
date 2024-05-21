@@ -27,9 +27,6 @@ const keys = {
 
 
 
-
-
-
 //The player we control
 const player = new Player({
        

@@ -17,18 +17,18 @@ class Coin extends Sprite{
     
 
     update() {
-        console.log("hello")
-        
-        this.speed *= 1.05
         this.position.x += this.XVelocity
         this.position.y += this.YVelocity
 
-        if (this.position.x < player.position.x + player.width() && this.position.x > player.position.x &&
-            this.position.y < player.position.y + player.height() && this.position.y > player.position.y) {
-                this.isCollected = true
-            } else {
-                this.follow()
-            }
+        if (this.collidedWithPlayer()) {
+            this.isCollected = true
+        } 
+
+        if (this.inRange()) {
+            this.speed *= 1.2
+            this.follow()
+        }
+        
         
         super.draw()
     }
@@ -55,6 +55,28 @@ class Coin extends Sprite{
         this.XVelocity = Xsign * XVel * this.speed
         this.YVelocity = Ysign * YVel * this.speed
 
-        //console.log(this.XVelocity)
+        
     }
+
+    collidedWithPlayer() {
+        var thisX = this.position.x
+        var playX = player.position.x
+        var thisY = this.position.y
+        var playY = player.position.y
+        return ((thisX > playX && thisX < playX + player.width() &&
+            thisY > playY && thisY < playY + player.height() ||
+            thisX + this.width() > playX && thisX + this.width() < playX + player.width() &&
+            thisY + this.height() > playY && thisY + this.height() < playY + player.height()))
+    }
+
+    inRange() {
+        var Xdiff = player.position.x - this.position.x
+        var Ydiff = player.position.y - this.position.y
+        var sum = (Xdiff * Xdiff) + (Ydiff * Ydiff) 
+        var sqr = Math.sqrt(sum)
+
+        return (sqr < 200)
+    }
+
+
 }
