@@ -19,4 +19,3 @@ let attackX;
 let attackY;
 
 let currentRoom;
-

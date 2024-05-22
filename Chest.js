@@ -1,0 +1,3 @@
+class Chest extends Sprite {
+    
+}

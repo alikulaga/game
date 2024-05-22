@@ -10,7 +10,7 @@ class Room {
         this.WallList = WallList
         this.EnemyList = EnemyList
         this.projectileList = []
-        this.coinList = null
+        this.coinList = [null]
 
         this.RoomsListNESW = RoomsListNESW 
 
@@ -64,13 +64,21 @@ class Room {
             }
         }
 
-        var current = this.coinList
-        while (current != null) {
+        console.log("start")
+        for (let i = 0; i < this.coinList.length; i++) {
+            if (this.coinList[i] == null) {
+            } else {
+                this.coinList[i].update()
+                if (this.coinList[i].isCollected) {
+                    this.coinList[i] = null
+                }
+            }
             
-            current.value.update()
-            current = current.next
+            if (i == objectLimit) {
+                this.coinList[objectLimit = null]   
+            }
         }
-
+        console.log("end")
         
 
         

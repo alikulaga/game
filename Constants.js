@@ -57,7 +57,7 @@ const player = new Player({
 })
 
 
-
+const objectLimit = 300
 
 
 //Weapon, always tracks to player
@@ -86,4 +86,3 @@ const westBorder = new BrickWall({
     position:{x: 0, y: 0},
     endPosition:{x: 25, y: 1000}
 })
-
