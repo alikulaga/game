@@ -41,6 +41,7 @@ room1_1_1 = new Room({
 
     EnemyList: listex,
 
+    ChestList: [new Chest({position:{x:500, y:500}})],
     doorIndex: null,
 
     RoomsListNESW: []

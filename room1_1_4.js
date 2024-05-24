@@ -41,6 +41,8 @@ room1_1_4 = new Room({
         })
     ],
 
+    ChestList: [null],
+
     doorIndex: null,
 
     RoomsListNESW: []

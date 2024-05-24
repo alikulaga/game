@@ -62,7 +62,7 @@ room1_1_3 = new Room({
             position:{x:800,  y: 50},
         })
     ],
-
+    ChestList: [null],
     doorIndex: 6,
 
     RoomsListNESW: []

@@ -48,6 +48,7 @@ function animate() {
         player.velocity.y = 0;
     }
     
+    interacting = false;
    
 }
 
@@ -57,7 +58,6 @@ function animate() {
 if (!gameover) {
     animate();
 }
-
 
 
 
@@ -90,6 +90,11 @@ window.addEventListener("keydown", (event) =>  {
         break;
         case 'e':
             currentWorld.paused = !currentWorld.paused
+        break;
+        case 'f':
+            interacting = true;
+        break;
+        
        
     }
 })

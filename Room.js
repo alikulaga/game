@@ -2,6 +2,7 @@ class Room {
     constructor ({
         WallList,
         EnemyList,
+        ChestList,
         
         doorIndex,
         RoomsListNESW
@@ -9,6 +10,8 @@ class Room {
     }) {
         this.WallList = WallList
         this.EnemyList = EnemyList
+        this.ChestList = ChestList
+
         this.projectileList = []
         this.coinList = [null]
 
@@ -64,7 +67,7 @@ class Room {
             }
         }
 
-        console.log("start")
+    
         for (let i = 0; i < this.coinList.length; i++) {
             if (this.coinList[i] == null) {
             } else {
@@ -78,11 +81,20 @@ class Room {
                 this.coinList[objectLimit = null]   
             }
         }
-        console.log("end")
-        
+
+        for (let i = 0; i < this.ChestList.length; i++) {
+            if (this.ChestList[i] != null) {
+                this.ChestList[i].update()
+            }
+            
+        }
 
         
     }
+
+    
+
+    
 
     
 

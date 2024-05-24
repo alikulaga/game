@@ -19,3 +19,5 @@ let attackX;
 let attackY;
 
 let currentRoom;
+
+let interacting = false;

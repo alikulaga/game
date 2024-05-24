@@ -42,6 +42,7 @@ room1_1_2 = new Room({
         })
     ],
 
+    ChestList: [null],
     doorIndex: 6,
 
     RoomsListNESW: []
