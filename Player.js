@@ -32,6 +32,10 @@ class Player extends Sprite{
         this.knocked = false;
 
         this.projectileList = [null]
+
+        this.ammo = 10
+
+        this.arrowRecharge = true
     }
 
 
@@ -90,7 +94,7 @@ class Player extends Sprite{
             this.hit = false;
 
         }
-        
+        document.querySelector('#Counter').textContent = this.ammo;
 
 
 
@@ -140,6 +144,17 @@ class Player extends Sprite{
 
         
         this.updateArrows()
+
+        if (this.arrowRecharge) {
+            this.arrowRecharge = false;
+            setTimeout(() => {
+                this.arrowRecharge = true
+            }, 10000)
+            if (this.ammo < 10) {
+                this.ammo++
+            }
+            
+        }
     }
 
 
@@ -158,26 +173,31 @@ class Player extends Sprite{
     }
 
     fireArrow() {
-        var index
+        if (this.ammo > 0) {
+            var index
         
-        for (let i = 0; i < this.projectileList.length; i++) {
-            if (this.projectileList[i] == null) {
-                index = i
-                
-                break;
-                
+            for (let i = 0; i < this.projectileList.length; i++) {
+                if (this.projectileList[i] == null) {
+                    index = i
+                    
+                    break;
+                    
+                }
             }
+            this.projectileList[index] = new Projectile({
+                position: {x: this.position.x, y: this.position.y}, 
+                velocity:{x: 0, y: 0},
+                imageSrc: "./img/RedBall.png",
+                scale: .05,
+                targetPosition: {x: mouseX, y: mouseY}
+            })
+            if (this.projectileList.length == index + 1) {
+                this.projectileList[index + 1] = null
+            }
+
+            this.ammo--
         }
-        this.projectileList[index] = new Projectile({
-            position: {x: this.position.x, y: this.position.y}, 
-            velocity:{x: 0, y: 0},
-            imageSrc: "./img/RedBall.png",
-            scale: .05,
-            targetPosition: {x: mouseX, y: mouseY}
-        })
-        if (this.projectileList.length == index + 1) {
-            this.projectileList[index + 1] = null
-        }
+        
         
         
     }

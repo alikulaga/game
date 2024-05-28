@@ -70,23 +70,5 @@ class Goblin extends Enemy {
         
     }
 
-    dropLoot() {
-        
-        var index = 0;
-
-        var list = currentWorld.getCurrentRoom().coinList
-
-        for (let i = 0; i < list.length; i++) {
-            if (list[i] == null) {
-                index = i;
-                break
-            }
-        }
-
-        currentWorld.getCurrentRoom().coinList[index] = new Coin({position:{x: this.position.x, y: this.position.y}})
-        currentWorld.getCurrentRoom().coinList[index + 1] = null
-        
-        
-        this.droppedLoot = true
-    }
+    
 }

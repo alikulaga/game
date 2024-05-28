@@ -80,4 +80,5 @@ class Skeleton extends Enemy {
         }, 2000)
 
     }
+
 }

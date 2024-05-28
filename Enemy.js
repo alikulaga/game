@@ -100,7 +100,7 @@ class Enemy extends Sprite{
 
         for (let i = 0; i < player.projectileList.length; i++) {
             if (player.projectileList[i] != null) {
-                if (this.projectileHit(player.projectileList[i])) {
+                if (this.projectileHit(player.projectileList[i]) && !(this.health == 0)) {
 
                     player.projectileList[i] = null
 
@@ -124,5 +124,24 @@ class Enemy extends Sprite{
     
     }
 
+    dropLoot() {
+        
+        var index = 0;
+
+        var list = currentWorld.getCurrentRoom().coinList
+
+        for (let i = 0; i < list.length; i++) {
+            if (list[i] == null) {
+                index = i;
+                break
+            }
+        }
+
+        currentWorld.getCurrentRoom().coinList[index] = new Coin({position:{x: this.position.x, y: this.position.y}})
+        currentWorld.getCurrentRoom().coinList[index + 1] = null
+        
+        
+        this.droppedLoot = true
+    }
     
 }
