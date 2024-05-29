@@ -54,7 +54,7 @@ class Goblin extends Enemy {
     HitPlayer() {
         if (this.position.x + this.width() - 5 > player.position.x && this.position.x + 5 < player.position.x + player.width() 
         &&  this.position.y + this.height() - 5 > player.position.y && this.position.y + 5 < player.position.y + player.height()
-        &&  !player.invincible) {
+        &&  !player.invincible && !this.isDead) {
 
             
 
