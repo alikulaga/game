@@ -9,12 +9,15 @@ class Coin extends Item{
         })
 
     }
+
+    update() {
+        if (this.isCollected) {
+            player.coinCount++
+            console.log("hello")
+        }
+        super.update()
+    }
     
-
     
-
-
-    
-
 
 }

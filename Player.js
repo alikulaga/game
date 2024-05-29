@@ -36,6 +36,8 @@ class Player extends Sprite{
         this.ammo = 10
 
         this.arrowRecharge = true
+
+        this.coinCount = 0
     }
 
 
@@ -95,6 +97,8 @@ class Player extends Sprite{
 
         }
         document.querySelector('#Counter').textContent = this.ammo;
+
+        document.querySelector('#CoinCounter').textContent = this.coinCount;
 
 
 

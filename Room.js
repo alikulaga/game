@@ -73,6 +73,7 @@ class Room {
             } else {
                 this.coinList[i].update()
                 if (this.coinList[i].isCollected) {
+                    player.coinCount++
                     this.coinList[i] = null
                 }
             }
@@ -88,6 +89,7 @@ class Room {
             }
             
         }
+        
 
         
     }

@@ -40,7 +40,7 @@ class Item extends Sprite{
             this.speed = 1.2
 
             this.position.y += Math.sin(this.bounceCycle)
-            // this.position.x -= Math.cos(this.bounceCycle)
+            
             this.bounceCycle += this.bounceSign * 0.2
         }
         
