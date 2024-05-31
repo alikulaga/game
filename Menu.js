@@ -44,6 +44,15 @@ class Menu extends Sprite {
            
             Game.changeScreen("MainMenu")
         }
+
+        if (func == "goControlsMenu") {
+
+            Game.changeScreen("ControlsMenu")
+        }
+
+        if (func == "goPauseMenu") {
+            Game.changeScreen("PauseMenu")
+        }
         
     }
 

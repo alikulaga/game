@@ -2,11 +2,13 @@ class ScreenManager {
     constructor({
         mainMenu,
         currentWorld,
-        pauseMenu
+        pauseMenu,
+        controlsMenu
     }) {
         this.mainMenu = mainMenu
         this.currentWorld = currentWorld
         this.pauseMenu = pauseMenu
+        this.controlsMenu = controlsMenu
 
         this.screen = mainMenu
         this.paused = true
@@ -63,6 +65,13 @@ class ScreenManager {
             this.mainMenuScreenOpen = false
             this.restoreHeader()
         }
+        if (newScreen == "ControlsMenu") {
+            this.screen = this.controlsMenu
+            this.paused = true
+            this.pauseMenuOpen = true
+            this.mainMenuScreenOpen = false
+            this.deleteHeader
+        }
         if (newScreen == "Game") {
             this.screen = this.currentWorld
             this.paused = false
@@ -70,6 +79,7 @@ class ScreenManager {
             this.mainMenuScreenOpen = false
             this.restoreHeader()
         }
+        
     }
 
     pause() {

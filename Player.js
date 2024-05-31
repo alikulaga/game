@@ -71,6 +71,8 @@ class Player extends Sprite{
 
     //Updates player data
     update() {
+
+        
         if (this.health == 0) {
             
         }
