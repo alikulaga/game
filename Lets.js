@@ -3,6 +3,10 @@
 let lastKeyX;
 let lastKeyY;
 
+let leftClick = false;
+
+let Epressed = false;
+let escPressed = false
 
 //Constantly tracks the coordinates of the mouse
 let mouseX;

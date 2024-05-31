@@ -7,43 +7,47 @@
 </head>
 
 
+<canvas> </canvas>
 
 
-<body>
     <div style="position: relative;">
+        
         <div
         id="gameHeader",
         style="
         position: absolute;
         bottom: 0;
         background-image: url(img/HeaderBackground.png);
-        height: 80px;
+        height: 0px;
         width: 1600px
         ">
-             <div
-             style="
-             position: absolute;
-             bottom: 20;
-             left: 20;
-             background-image: url(img/HealthBar.png);
-             height: 30px;
-             width: 500px;
-             ">
-
-             </div>
-             
+        
             <div
-            id="HealthBar",
+            id="HealthBackground",
             style="
             position: absolute;
             bottom: 20;
             left: 20;
             background-image: url(img/HealthBackground.png);
-            height: 30px;
+            height: 0px;
             width: 500px;
            
             ">
             </div>
+             <div
+             id="HealthBar",
+             style="
+             position: absolute;
+             bottom: 20;
+             left: 20;
+             background-image: url(img/HealthBar.png);
+             height: 0px;
+             width: 500px;
+             ">
+
+             </div>
+             
+            
 
             <div
             id="ProjectileCounterBG",
@@ -54,11 +58,11 @@
             scale: .15;
             background-image: url(img/CounterBackground.png);
             width: 696px;
-            height: 418px;
+            height: 0px;
             
            
             ">
-                <span id = "Counter", style = "position: absolute; bottom: 25; left: -40; font-size: 400; text-align:end; height: 418; width: 696; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;"> 
+                <span id = "Counter", style = "position: absolute; bottom: 25; left: -40; font-size: 400; text-align:end; height: 0; width: 696; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;"> 
                 
                 </span>
             </div>
@@ -71,7 +75,7 @@
             bottom: -200;
             left: 1295;
             background-image: url(img/RedBall.png);
-            height: 477px;
+            height: 0px;
             width: 477px;
            
             ">
@@ -86,11 +90,11 @@
             scale: .15;
             background-image: url(img/CounterBackground.png);
             width: 696px;
-            height: 418px;
+            height: 0px;
             
            
             ">
-                <span id = "CoinCounter", style = "position: absolute; bottom: 25; left: -40; font-size: 400; text-align:end; height: 418; width: 696; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;"> 
+                <span id = "CoinCounter", style = "position: absolute; bottom: 25; left: -40; font-size: 400; text-align:end; height: 0; width: 696; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;"> 
                 
                 </span>
             </div>
@@ -103,7 +107,7 @@
             bottom: -172;
             left: 1130;
             background-image: url(img/Coin.png);
-            height: 420px;
+            height: 0px;
             width: 420px;
            
             ">
@@ -116,7 +120,7 @@
 
         </div>
        
-        <canvas> </canvas>
+        
        
     </div>
     
@@ -125,30 +129,34 @@
     
     
     <!-- Handle the objects -->
+
     <script src="js/Classes/Important/Sprite.js"> </script>
     <script src="js/Classes/Important/Projectile.js"> </script>
+
     <script src="js/Classes/Enemys/Enemy.js"> </script>
     <script src="js/Classes/Enemys/Skeleton.js"> </script>
     <script src="js/Classes/Enemys/Goblin.js"> </script>
+
     <script src="js/Classes/Player/Player.js"> </script>
     <script src="js/Classes/Player/Weapon.js"> </script>
+
     <script src="js/Classes/Environment/Level.js"> </script>
     <script src="js/Classes/Environment/Room.js"> </script>
     <script src="js/Classes/Environment/World.js"> </script>
     <script src="js/Classes/Environment/Wall.js"> </script>
     <script src="js/Classes/Environment/BrickWall.js"> </script>
+
     <script src="js/Classes/Items/Item.js"> </script>
     <script src="js/Classes/Items/Coin.js"> </script>
     <script src="js/Classes/Items/Chest.js"> </script>
 
-    
+    <script src="js/Classes/Screens/Menu.js"> </script>
+    <script src="js/Classes/Screens/Button.js"> </script>
+    <script src="js/Classes/Screens/ScreenManager.js"> </script>
 
 
     
 
-
-    
-    
     <!-- Holds the variables -->
     <script src="js/Variables/Constants.js"> </script>
     <script src="js/Variables/Lets.js"> </script>
@@ -166,19 +174,7 @@
 
     <script src="js/LevelDesign/world1/1-1/level1_1.js"> </script>
 
-    <!-- Level 1-2 -->
-    <script src="js/LevelDesign/world1/1-2/room1_2_1.js"> </script>
-    <script src="js/LevelDesign/world1/1-2/room1_2_2.js"> </script>
-    <script src="js/LevelDesign/world1/1-2/room1_2_3.js"> </script>
     
-    <script src="js/LevelDesign/world1/1-2/level1_2.js"> </script>
-
-    <!-- Level 1-3 -->
-    <script src="js/LevelDesign/world1/1-3/room1_3_1.js"> </script>
-    <script src="js/LevelDesign/world1/1-3/room1_3_2.js"> </script>
-    <script src="js/LevelDesign/world1/1-3/room1_3_3.js"> </script>
-    
-    <script src="js/LevelDesign/world1/1-3/level1_3.js"> </script>
 
     <!-- World 1 -->
     <script src="js/LevelDesign/world1/world1.js"> </script>

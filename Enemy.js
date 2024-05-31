@@ -69,7 +69,7 @@ class Enemy extends Sprite{
             this.isDead = true
         }
 
-        if (currentWorld.paused) {
+        if (Game.paused) {
             this.velocity.x = 0
             this.velocity.y = 0
         }
@@ -128,7 +128,7 @@ class Enemy extends Sprite{
         
         var index = 0;
 
-        var list = currentWorld.getCurrentRoom().coinList
+        var list = Game.getCurrentRoom().coinList
 
         for (let i = 0; i < list.length; i++) {
             if (list[i] == null) {
@@ -137,8 +137,8 @@ class Enemy extends Sprite{
             }
         }
 
-        currentWorld.getCurrentRoom().coinList[index] = new Coin({position:{x: this.position.x, y: this.position.y}})
-        currentWorld.getCurrentRoom().coinList[index + 1] = null
+        Game.getCurrentRoom().coinList[index] = new Coin({position:{x: this.position.x, y: this.position.y}})
+        Game.getCurrentRoom().coinList[index + 1] = null
         
         
         this.droppedLoot = true

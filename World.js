@@ -11,25 +11,26 @@ class World{
        
     }
 
-    load() {
+    update() {
+        
         this.levelList[this.currentLevel].update()
         
     }
 
-    getCurrentLevel() {
+    getLevel() {
         return this.levelList[this.currentLevel]
     }
 
-    getCurrentRoom() {
-        return this.getCurrentLevel().currentRoom
+    getRoom() {
+        return this.getLevel().currentRoom
     }
 
-    getCurrentWallList() {
-        return this.getCurrentRoom().WallList
+    getWallList() {
+        return this.getRoom().WallList
     }
 
-    getCurrentEnemyList() {
-        return this.getCurrentRoom().enemyList
+    getEnemyList() {
+        return this.getRoom().enemyList
     }
 
     

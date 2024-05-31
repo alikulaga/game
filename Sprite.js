@@ -35,6 +35,7 @@ class Sprite {
             this.height()
             );
         }  
+        
 
     //updates information about the sprite, and draws the next frame
     update() {
@@ -43,9 +44,9 @@ class Sprite {
 
 
     checkWalls() {
-        for(let i = 0; i < currentWorld.getCurrentWallList().length; i++) {
-            if (currentWorld.getCurrentLevel().currentRoom.WallList[i] != null) {
-                var collisionDirection = currentWorld.getCurrentLevel().currentRoom.WallList[i].colliding(this.position, this.width(), this.height(), this.velocity)
+        for(let i = 0; i < Game.getCurrentWallList().length; i++) {
+            if (Game.getCurrentLevel().currentRoom.WallList[i] != null) {
+                var collisionDirection = Game.getCurrentLevel().currentRoom.WallList[i].colliding(this.position, this.width(), this.height(), this.velocity)
 
                 if(collisionDirection == 1) {
                     this.velocity.x = 0; 
@@ -71,7 +72,7 @@ class Sprite {
         )) {
             this.image.src = this.imageHurt
             setTimeout(() => {
-                this.image.src = player.imageNormal
+                this.image.src = this.imageNormal
             }, 350)
             return true;
         } else {

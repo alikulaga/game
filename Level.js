@@ -12,12 +12,23 @@ class Level {
     update() {
         this.background.update();
         
+        if (leftClick && !Game.paused) {
+            player.attacking = true
+        }
+
+        if (Epressed) {
+            Game.paused = !Game.paused
+        }
+
         player.update();
-        this.currentRoom.load();
         weapon.update()
+        this.currentRoom.load();
+        
         
 
         this.checkExits()
+
+        
         
         
     }

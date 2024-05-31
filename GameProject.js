@@ -1,12 +1,13 @@
-var currentWorld = world1;
-
+var Game = new ScreenManager({mainMenu: mainMenu, currentWorld: world1, pauseMenu: pauseScreen})
 
 
 function animate() {
 
     window.requestAnimationFrame(animate);
-   
-    currentWorld.load();
+    
+    
+    Game.update()
+    
     
     
     
@@ -43,12 +44,15 @@ function animate() {
 
     }
 
-    if (currentWorld.paused) {
+    if (Game.paused) {
         player.velocity.x = 0;
         player.velocity.y = 0;
     }
     
     interacting = false;
+    leftClick = false
+    Epressed = false
+    //c.clearRect(0, 0, canvas.width, canvas.height)
    
 }
 
@@ -66,7 +70,7 @@ window.addEventListener("keydown", (event) =>  {
     //console.log(event);
 
 
-
+   
     switch (event.key) {
         case 'd':
             keys.d.pressed = true;
@@ -85,15 +89,25 @@ window.addEventListener("keydown", (event) =>  {
             lastKeyY = 's';
         break;
         case ' ':
-            if (!currentWorld.paused)
+            if (!Game.paused)
             player.fireArrow();
         break;
         case 'e':
-            currentWorld.paused = !currentWorld.paused
+            Epressed = true
         break;
         case 'f':
             interacting = true;
         break;
+        case 'Escape':
+            if (Game.pauseMenuOpen) {
+                Game.changeScreen("Game")
+            } else {
+                if (!Game.mainMenuScreenOpen) {
+                    Game.changeScreen("PauseMenu")
+                }
+            }
+        break;
+
         
        
     }
@@ -149,14 +163,13 @@ document.addEventListener("mousedown", (event) => {
     //console.log(event);
     event.preventDefault()
 
-    if (!currentWorld.paused) {
-        if (event.button == 0) {
-            player.attacking = true;
-        }
-    
-        if (event.button == 2) {
-            
-        }
+   
+    if (event.button == 0) {
+        leftClick = true
     }
+        
+        
+
+    //if ()
     
 })

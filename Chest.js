@@ -49,12 +49,12 @@ class Chest extends Sprite {
     }
 
     closeChest() {
-        currentWorld.paused = false;
+        Game.paused = false;
         this.open = false
     }
 
     openChest() {
-        currentWorld.paused = true
+        Game.paused = true
         this.open = true
     }
 

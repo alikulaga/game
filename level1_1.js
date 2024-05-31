@@ -4,27 +4,11 @@ room1_1_1.RoomsListNESW = [
     room1_1_3,
     null
 ]
+room1_1_2.RoomsListNESW[3] = room1_1_1
+room1_1_3.RoomsListNESW[0] = room1_1_1
+room1_1_3.RoomsListNESW[1] = room1_1_4
 
-room1_1_2.RoomsListNESW = [
-    null,
-    null,
-    null,
-    room1_1_1
-]
-
-room1_1_3.RoomsListNESW = [
-    room1_1_1, 
-    room1_1_4,
-    null,
-    null
-]
-
-room1_1_4.RoomsListNESW = [
-    null,
-    null,
-    null,
-    room1_1_3
-]
+room1_1_4.RoomsListNESW[3] = room1_1_3
 
 
 

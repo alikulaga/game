@@ -33,7 +33,7 @@ class Goblin extends Enemy {
         
         this.draw();
         
-        if (!currentWorld.paused) {
+        if (!Game.paused) {
             
             this.setVelocities();
 

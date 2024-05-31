@@ -84,5 +84,17 @@ const southBorder = new BrickWall({
 
 const westBorder = new BrickWall({
     position:{x: 0, y: 0},
-    endPosition:{x: 25, y: 1000}
+    endPosition:{x: 25, y: 820}
+
 })
+
+
+const resumeButton = new Button({position: {x: 50, y: 50}, imageSrc: "./img/ResumeButton.png", scale: 1.5, imgHighlight: "./img/ResumeButtonHighlighted.png", functionality: "resume"})
+const mainMenuButton = new Button({position:{x: 50, y: 250}, imageSrc: "./img/MainMenuButton.png", scale: 1.5, imgHighlight: "./img/MainMenuButtonHighlighted.png", functionality: "goMainMenu"})
+const playButton = new Button({position: {x: 400, y: 400}, imageSrc: "./img/PlayButton.png", scale: 1, imgHighlight: "./img/playButtonHighlighted.png", functionality: "play"})
+
+
+const pauseScreen = new Menu({position: {x: 0, y: 0}, imageSrc: "./img/PauseScreen.png", scale: 1, buttonList: [resumeButton, mainMenuButton]})
+
+
+const mainMenu = new Menu({position: {x:0, y:0}, imageSrc: "./img/MainMenuScreen.png", scale: 1, buttonList: [playButton]})

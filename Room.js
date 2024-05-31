@@ -22,6 +22,7 @@ class Room {
         this.enemysDead = false;
 
         this.doorRemoved = false;
+
         
     }
 

@@ -74,6 +74,7 @@ class Player extends Sprite{
         if (this.health == 0) {
             
         }
+    
 
         this.draw();
 
@@ -120,7 +121,7 @@ class Player extends Sprite{
         this.position.x += this.velocity.x
         this.position.y += this.velocity.y;
         
-        var enList = currentWorld.getCurrentRoom().EnemyList
+        var enList = Game.getCurrentRoom().EnemyList
 
 
         for (let i = 0; i < enList.length; i++) {
@@ -154,7 +155,7 @@ class Player extends Sprite{
             setTimeout(() => {
                 this.arrowRecharge = true
             }, 10000)
-            if (this.ammo < 10) {
+            if (this.ammo < 10 && !Game.paused) {
                 this.ammo++
             }
             
@@ -163,7 +164,7 @@ class Player extends Sprite{
 
 
     knockback({Xattack, Yattack}) {
-        console.log(Xattack)
+       
         this.knocked = true
         setTimeout(() => {
             this.knocked = false
