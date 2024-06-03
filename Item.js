@@ -44,6 +44,7 @@ class Item extends Sprite{
             this.bounceCycle += this.bounceSign * 0.2
         }
         
+       
         if (this.bounceCycle == 1) {
             this.bounceSign == -1
         }

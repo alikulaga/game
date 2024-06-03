@@ -30,7 +30,12 @@ class World{
     }
 
     getEnemyList() {
-        return this.getRoom().enemyList
+        
+        return this.getRoom().EnemyList
+    }
+
+    getLevelsList() {
+        return this.levelList
     }
 
     

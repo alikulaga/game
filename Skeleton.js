@@ -17,16 +17,23 @@ class Skeleton extends Enemy {
 
         this.attacking = false;
         this.hit = false;
-        this.health = 100;
+        this.health = skeletonHealth;
+        this.maxHealth = skeletonHealth
         this.angle = 0;
         this.knockbackSpeed;
         this.fixAngles = false;
         this.strength = 1;
+
         this.firing = true;
         this.arrow = null;
         this.speed = 2
 
         this.index = 0
+
+        this.firePosition
+        this.arrowCountdown = 160
+
+        this.enemyType = "skeleton"
     }
 
     update() {
@@ -34,6 +41,14 @@ class Skeleton extends Enemy {
         this.position.x += this.velocity.x
         this.position.y += this.velocity.y
         this.draw();
+
+        console.log(this.arrowCountdown)
+        this.arrowCountdown--
+
+        if (this.arrowCountdown == 0) {
+            this.arrowCountdown = 160
+            this.firing = true
+        }
 
         if (this.firing && this.health != 0) {
             this.fireArrow()
@@ -45,7 +60,7 @@ class Skeleton extends Enemy {
     }
 
     setVelocities() {
-        this.follow()
+        super.update()
         var xDistance = player.position.x - this.position.x
         var yDistance = player.position.y - this.position.y
         var totalDistance = Math.sqrt(Math.pow(xDistance, 2) + Math.pow(yDistance, 2))
@@ -62,6 +77,7 @@ class Skeleton extends Enemy {
     }
 
     fireArrow() {
+        
         this.arrow = new Projectile({
             position: {x: this.position.x, y: this.position.y}, 
             velocity:{x: 0, y: 0},
@@ -74,11 +90,9 @@ class Skeleton extends Enemy {
         Game.getCurrentRoom().projectileList[this.index] = this.arrow
 
         this.firing = false;
-        setTimeout(() => {
-            Game.getCurrentRoom().projectileList[this.index] = null
-            this.firing = true;
-        }, 2000)
+        
 
     }
 
+   
 }

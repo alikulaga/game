@@ -2,9 +2,11 @@
 class Level {
     constructor({
         currentRoom,
+        roomsList,
         background,
     }) {
 
+        this.roomsList = roomsList
         this.currentRoom = currentRoom
         this.background = background
     }
@@ -55,5 +57,9 @@ class Level {
             player.position.x = canvas.width - player.width();
             player.projectileList = [null]
         }
+    }
+
+    getRoomsList() {
+        return this.roomsList
     }
 }

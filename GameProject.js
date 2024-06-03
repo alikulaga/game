@@ -1,4 +1,8 @@
-var Game = new ScreenManager({mainMenu: mainMenu, currentWorld: world1, pauseMenu: pauseScreen, controlsMenu: controlsMenu})
+worldsList = [world1]
+var Game = new ScreenManager({mainMenu: mainMenu, currentWorld: world1, pauseMenu: pauseScreen, controlsMenu: controlsMenu, worldsList: worldsList})
+
+save1 = new SaveFile(5) 
+
 
 
 function animate() {
@@ -9,9 +13,7 @@ function animate() {
     Game.update()
     
     
-    
-    
-
+    //console.log(JSON.parse(localStorage.getItem("level1_1enemies")))
 
     if (!player.knocked) {
 
@@ -52,6 +54,8 @@ function animate() {
     interacting = false;
     leftClick = false
     Epressed = false
+
+    
     //c.clearRect(0, 0, canvas.width, canvas.height)
    
 }
@@ -92,18 +96,21 @@ window.addEventListener("keydown", (event) =>  {
             if (!Game.paused)
             player.fireArrow();
         break;
-        case 'e':
-            Epressed = true
-        break;
+        
         case 'f':
             interacting = true;
         break;
         case 'Escape':
-            if (Game.pauseMenuOpen) {
+            if (Game.pauseMenuOpen && Game.lastScreen != mainMenu) {
                 Game.changeScreen("Game")
             } else {
                 if (!Game.mainMenuScreenOpen) {
-                    Game.changeScreen("PauseMenu")
+                    if (Game.lastScreen == mainMenu && Game.screen != Game.currentWorld) {
+                        Game.changeScreen("MainMenu")
+                    } else {
+                        Game.changeScreen("PauseMenu")
+                    }
+                    
                 }
             }
         break;
@@ -144,6 +151,12 @@ window.addEventListener("keyup", (event) =>  {
             if (keys.w.pressed) {
                 lastKeyY = 'w'
             }
+        break;
+        case 'l':
+            save1.save()
+        break;
+        case 'k':
+            save1.load()
         break;
        
     }

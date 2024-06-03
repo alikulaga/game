@@ -12,12 +12,28 @@ room1_1_4 = new Room({
             width: 25,
             height: 610
         }),
+
+        new BrickWall({
+            position: {x: 1575, y: 580},
+            endPosition: {x: 1600, y: 900}
+        }),
         
         //Right Wall
-        eastBorder,
+        new BrickWall({
+            position:{x: 1575, y: 0},
+            endPosition:{x: 1600, y: 430}
+        }),
         
         //Bottom Wall
         southBorder,
+
+        new Wall({
+            position:{x: 1575, y: 430},
+            imageSrc: "./img/Door.png",
+            scale: 1/3,
+            width: 25,
+            height: 190
+        })
 
 
     ],
@@ -43,7 +59,7 @@ room1_1_4 = new Room({
 
     ChestList: [null],
 
-    doorIndex: null,
+    doorIndex: 5,
 
     RoomsListNESW: []
 

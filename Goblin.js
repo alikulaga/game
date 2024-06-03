@@ -17,7 +17,8 @@ class Goblin extends Enemy {
 
         this.attacking = false;
         this.hit = false;
-        this.health = 100;
+        this.health = goblinHealth;
+        this.maxHealth = goblinHealth;
         this.angle = 0;
         this.knockbackSpeed;
         this.fixAngles = false;
@@ -25,12 +26,16 @@ class Goblin extends Enemy {
         this.speed = enemySpeed
 
         this.droppedLoot = false
+
+        this.enemyType = "goblin"
+        
     }
 
 
     update() {
 
         
+
         this.draw();
         
         if (!Game.paused) {
@@ -47,7 +52,8 @@ class Goblin extends Enemy {
     setVelocities() {
         this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
-        this.follow()
+        
+        super.update()
 
     }
 
@@ -64,11 +70,14 @@ class Goblin extends Enemy {
             player.knockback({Xattack: this.position.x, Yattack: this.position.y})
             setTimeout(() => {
                 player.invincible = false;
-                player.image.src = player.imageNormal
+                if (!this.isDead) {
+                    player.image.src = player.imageNormal
+                }
+                
             }, 350)
         }
         
     }
-
+    
     
 }

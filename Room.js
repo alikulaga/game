@@ -35,8 +35,10 @@ class Room {
             if (this.EnemyList[i]!= null) {
                 this.enemysDead = false;
    
+             
                 this.EnemyList[i].update();
                 
+
 
                 if (this.EnemyList[i].isDead) {
                     
@@ -74,7 +76,10 @@ class Room {
             } else {
                 this.coinList[i].update()
                 if (this.coinList[i].isCollected) {
-                    player.coinCount++
+                    if (this.coinList[i].despawnTime > 0) {
+                        player.coinCount++
+                    }
+                    
                     this.coinList[i] = null
                 }
             }

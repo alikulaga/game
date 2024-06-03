@@ -19,7 +19,8 @@ class Player extends Sprite{
         this.velocity = velocity;
         this.speed = speed;
         this.health = health
-        
+        this.timeLeft = 57
+
         this.imageNormal = "./img/Player.png"
         this.imageHurt = "./img/PlayerHurt.png"
 
@@ -76,7 +77,7 @@ class Player extends Sprite{
         if (this.health == 0) {
             
         }
-    
+        
 
         this.draw();
 
@@ -152,16 +153,28 @@ class Player extends Sprite{
         
         this.updateArrows()
 
+        
         if (this.arrowRecharge) {
             this.arrowRecharge = false;
-            setTimeout(() => {
-                this.arrowRecharge = true
-            }, 10000)
+
             if (this.ammo < 10 && !Game.paused) {
                 this.ammo++
+                
             }
-            
+
         }
+      
+        if (this.timeLeft < 0) {
+            this.arrowRecharge =true
+            this.timeLeft = 57
+        }
+
+        if (this.ammo < 10 && !Game.paused) {
+            this.timeLeft -= (57/(bulletCooldown * 6/100))
+            document.querySelector('#Timer').style.height = (this.timeLeft) + "px";
+        }
+        
+
     }
 
 

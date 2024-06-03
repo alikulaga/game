@@ -93,11 +93,14 @@ const resumeButton = new Button({position: {x: 50, y: 50}, imageSrc: "./img/Resu
 const mainMenuButton = new Button({position:{x: 50, y: 450}, imageSrc: "./img/MainMenuButton.png", scale: 1.5, imgHighlight: "./img/MainMenuButtonHighlighted.png", functionality: "goMainMenu"})
 const playButton = new Button({position: {x: 400, y: 400}, imageSrc: "./img/PlayButton.png", scale: 1, imgHighlight: "./img/playButtonHighlighted.png", functionality: "play"})
 const controlsButton = new Button({position: {x: 50, y: 250}, imageSrc: "./img/ControlsButton.png", scale: 1.5, imgHighlight: "./img/ControlsButtonHighlighted.png", functionality: "goControlsMenu"})
-const returnButton = new Button({position: {x: 10, y: 10}, imageSrc: "./img/ReturnButton.png", scale: 1, imgHighlight: "./img/ReturnButton.png", functionality: "goPauseMenu"})
+const controlsButton_Menu = new Button({position: {x: 417, y: 720}, imageSrc: "./img/ControlsButton.png", scale: .8, imgHighlight: "./img/ControlsButtonHighlighted.png", functionality: "goControlsMenu"})
+const returnButton = new Button({position: {x: 10, y: 10}, imageSrc: "./img/ReturnButton.png", scale: 1, imgHighlight: "./img/ReturnButtonHighlighted.png", functionality: "return"})
 
 
 const pauseScreen = new Menu({position: {x: 0, y: 0}, imageSrc: "./img/PauseScreen.png", scale: 1, buttonList: [resumeButton, mainMenuButton, controlsButton]})
 
 const controlsMenu = new Menu({position: {x: 0, y: 0}, imageSrc: "./img/ControlsMenu.png", scale: 1, buttonList: [returnButton]})
 
-const mainMenu = new Menu({position: {x:0, y:0}, imageSrc: "./img/MainMenuScreen.png", scale: 1, buttonList: [playButton]})
+const mainMenu = new Menu({position: {x:0, y:0}, imageSrc: "./img/MainMenuScreen.png", scale: 1, buttonList: [playButton, controlsButton_Menu]})
+
+

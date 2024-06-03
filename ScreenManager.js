@@ -3,14 +3,17 @@ class ScreenManager {
         mainMenu,
         currentWorld,
         pauseMenu,
-        controlsMenu
+        controlsMenu,
+        worldsList
     }) {
         this.mainMenu = mainMenu
         this.currentWorld = currentWorld
         this.pauseMenu = pauseMenu
         this.controlsMenu = controlsMenu
+        this.worldsList = worldsList
 
         this.screen = mainMenu
+        this.lastScreen
         this.paused = true
 
         this.pauseScreenOpen = false
@@ -44,6 +47,8 @@ class ScreenManager {
 
     
     update() {
+
+        
         
         this.screen.update()
     
@@ -52,6 +57,7 @@ class ScreenManager {
     changeScreen(newScreen) {
         
         if (newScreen == "MainMenu") {
+            this.lastScreen = this.screen
             this.deleteHeader()
             this.screen = this.mainMenu
             this.paused = true
@@ -59,6 +65,7 @@ class ScreenManager {
             this.mainMenuScreenOpen = true
         } 
         if (newScreen == "PauseMenu") {
+            this.lastScreen = this.screen
             this.screen = this.pauseMenu
             this.paused = true
             this.pauseMenuOpen = true
@@ -66,18 +73,24 @@ class ScreenManager {
             this.restoreHeader()
         }
         if (newScreen == "ControlsMenu") {
+            this.lastScreen = this.screen
             this.screen = this.controlsMenu
             this.paused = true
             this.pauseMenuOpen = true
             this.mainMenuScreenOpen = false
-            this.deleteHeader
+            this.deleteHeader()
         }
         if (newScreen == "Game") {
+            this.lastScreen = this.screen
             this.screen = this.currentWorld
             this.paused = false
             this.pauseMenuOpen = false
             this.mainMenuScreenOpen = false
             this.restoreHeader()
+        }
+        if (newScreen == "Return") {
+            console.log("he")
+            this.screen = this.lastScreen
         }
         
     }

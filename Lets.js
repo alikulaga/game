@@ -25,3 +25,11 @@ let attackY;
 let currentRoom;
 
 let interacting = false;
+
+let bulletCooldown = 7000
+
+let goblinHealth = 100
+
+let skeletonHealth = 300
+
+let bossHealth = 2000

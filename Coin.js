@@ -8,13 +8,30 @@ class Coin extends Item{
             scale: 0.06
         })
 
+        this.imageNormal ="./img/Coin.png"
+        this.imageFading = "./img/VanishingCoin.png"
+        
+        this.despawnTime = 800
+
     }
 
     update() {
-        if (this.isCollected) {
-            player.coinCount++
-            console.log("hello")
+        this.despawnTime--
+
+        if (this.despawnTime < 300) {
+            
+            if ((Math.floor(this.despawnTime / 10)) % 2 == 0) {
+                console.log("esf")
+                this.image.src = this.imageFading
+            } else {
+                this.image.src = this.imageNormal
+            }
         }
+        if (this.despawnTime == 0) {
+            this.isCollected = true;
+        }
+
+        
         super.update()
     }
     

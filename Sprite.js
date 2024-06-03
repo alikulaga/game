@@ -7,18 +7,22 @@ class Sprite {
       
     }) {
         this.position = position;
-
+        this.imageSrc = imageSrc
+        
         this.image = new Image();
         this.image.src = imageSrc;
 
         this.scale = scale;
 
+        this.cropX = 1
+        this.cropY = 1
+
     }
     height() {
-        return this.image.height * this.scale
+        return this.image.height * this.scale * this.cropY
     }
     width() {
-        return this.image.width * this.scale
+        return this.image.width * this.scale * this.cropX
     }
 
     //Draws the sprite to the screen
@@ -29,16 +33,21 @@ class Sprite {
         //Takes image, and the
         c.drawImage(
             this.image,
+            0,
+            0,
+            (this.width() / this.scale),
+            (this.height() / this.scale),
             this.position.x,
             this.position.y,
             this.width(),
-            this.height()
+            this.height() 
             );
         }  
         
 
     //updates information about the sprite, and draws the next frame
     update() {
+        
         this.draw();
     }
 
@@ -72,7 +81,10 @@ class Sprite {
         )) {
             this.image.src = this.imageHurt
             setTimeout(() => {
-                this.image.src = this.imageNormal
+                if (!this.isDead) {
+                    this.image.src = this.imageNormal
+                }
+                
             }, 350)
             return true;
         } else {

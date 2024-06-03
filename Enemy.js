@@ -26,9 +26,34 @@ class Enemy extends Sprite{
 
         this.XSign = 1
         this.YSign = 1
+
+        this.healthBackground = new Sprite({position: {x: position.x + 5, y: position.y - 15}, imageSrc: "./img/EnemyHealthBackground.png", scale: .35})
+        this.healthBar = new Sprite({position: {x: position.x + 5, y: position.y - 15}, imageSrc: "./img/EnemyHealthBar.png", scale: .35})
+        this.barLength = 1
+
+        this.enemyType
     }
 
-   
+    update() {
+        if (this.health != this.maxHealth) {
+            this.healthBackground.draw()
+            this.healthBar.draw()
+        }
+        
+        //console.log(this.healthBar.position)
+        this.healthBar.position.x = this.position.x + 5
+        this.healthBar.position.y = this.position.y - 15
+
+        if (this.barLength > this.health/this.maxHealth) {
+            this.barLength -= 0.02
+        }
+        this.healthBar.cropX = this.barLength
+
+        this.healthBackground.position.x = this.position.x + 5
+        this.healthBackground.position.y = this.position.y - 15
+        
+        this.follow()
+    }
     follow() {
         var XDistance = player.position.x - this.position.x
         var YDistance = player.position.y - this.position.y
@@ -143,5 +168,7 @@ class Enemy extends Sprite{
         
         this.droppedLoot = true
     }
+
+    
     
 }
