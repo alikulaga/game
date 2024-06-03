@@ -58,6 +58,9 @@ class Menu extends Sprite {
             Game.changeScreen("Return")
         }
         
+        if (func == "goAboutMe") {
+            Game.changeScreen("AboutMe")
+        }
     }
 
     

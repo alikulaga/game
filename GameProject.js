@@ -1,5 +1,5 @@
 worldsList = [world1]
-var Game = new ScreenManager({mainMenu: mainMenu, currentWorld: world1, pauseMenu: pauseScreen, controlsMenu: controlsMenu, worldsList: worldsList})
+var Game = new ScreenManager({mainMenu: mainMenu, currentWorld: world1, pauseMenu: pauseScreen, controlsMenu: controlsMenu, aboutMePage: aboutMePage, worldsList: worldsList})
 
 save1 = new SaveFile(5) 
 
@@ -105,7 +105,8 @@ window.addEventListener("keydown", (event) =>  {
                 Game.changeScreen("Game")
             } else {
                 if (!Game.mainMenuScreenOpen) {
-                    if (Game.lastScreen == mainMenu && Game.screen != Game.currentWorld) {
+                    if (Game.lastScreen == Game.mainMenu && Game.screen != Game.currentWorld) {
+                        console.log("hello")
                         Game.changeScreen("MainMenu")
                     } else {
                         Game.changeScreen("PauseMenu")
@@ -113,6 +114,10 @@ window.addEventListener("keydown", (event) =>  {
                     
                 }
             }
+            if (Game.screen != Game.currentWorld) {
+                console.log("hfn")
+            }
+            
         break;
 
         

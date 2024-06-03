@@ -4,12 +4,14 @@ class ScreenManager {
         currentWorld,
         pauseMenu,
         controlsMenu,
+        aboutMePage,
         worldsList
     }) {
         this.mainMenu = mainMenu
         this.currentWorld = currentWorld
         this.pauseMenu = pauseMenu
         this.controlsMenu = controlsMenu
+        this.aboutMePage = aboutMePage
         this.worldsList = worldsList
 
         this.screen = mainMenu
@@ -90,7 +92,15 @@ class ScreenManager {
         }
         if (newScreen == "Return") {
             console.log("he")
+            this.lastScreen.update()
             this.screen = this.lastScreen
+        }
+        if (newScreen == "AboutMe") {
+            this.lastScreen = this.screen
+            this.screen = this.aboutMePage
+            this.paused = true
+            this.pauseMenuOpen = true
+            this.mainMenuScreenOpen = false
         }
         
     }
