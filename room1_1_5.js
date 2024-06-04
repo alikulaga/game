@@ -1,27 +1,27 @@
-room1_1_5 = new Room({
-    WallList: [
-        northBorder,
-        southBorder,
-        eastBorder,
+// room1_1_5 = new Room({
+//     WallList: [
+//         northBorder,
+//         southBorder,
+//         eastBorder,
 
-        new BrickWall({
-            position: {x: 0, y: 0},
-            endPosition: {x: 25, y: 430}
-        }),
+//         new BrickWall({
+//             position: {x: 0, y: 0},
+//             endPosition: {x: 25, y: 430}
+//         }),
 
-        new BrickWall({
-            position:{x: 0, y: 580},
-            endPosition: {x: 25, y: 900}
-        })
-    ],
+//         new BrickWall({
+//             position:{x: 0, y: 580},
+//             endPosition: {x: 25, y: 900}
+//         })
+//     ],
 
-    EnemyList: [
-        //new Boss({position: {x: 500, y: 500}})
-    ],
+//     EnemyList: [
+        
+//     ],
 
-    ChestList: [null],
+//     ChestList: [null],
 
-    doorIndex: null,
+//     doorIndex: null,
 
-    RoomsListNESW: []
-})
+//     RoomsListNESW: []
+// })

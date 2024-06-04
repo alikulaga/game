@@ -65,7 +65,7 @@ room1_1_3 = new Room({
     ChestList: [null],
     doorIndex: 6,
 
-    RoomsListNESW: []
+    RoomsListNESW: [],
 
-
+    respawn: null
 })

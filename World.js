@@ -13,6 +13,7 @@ class World{
 
     update() {
         
+        
         this.levelList[this.currentLevel].update()
         
     }

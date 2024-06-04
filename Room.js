@@ -5,7 +5,8 @@ class Room {
         ChestList,
         
         doorIndex,
-        RoomsListNESW
+        RoomsListNESW,
+        respawn
 
     }) {
         this.WallList = WallList
@@ -22,6 +23,8 @@ class Room {
         this.enemysDead = false;
 
         this.doorRemoved = false;
+
+        this.respawn = respawn
 
         
     }

@@ -4,14 +4,18 @@ class Level {
         currentRoom,
         roomsList,
         background,
+        
     }) {
 
         this.roomsList = roomsList
         this.currentRoom = currentRoom
-        this.background = background
+        this.background = background,
+        
+        this.roomIndex = 0
     }
 
     update() {
+        
         this.background.update();
         
         if (leftClick && !Game.paused) {

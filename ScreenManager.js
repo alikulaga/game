@@ -123,6 +123,7 @@ class ScreenManager {
         document.querySelector('#CoinImage').style.height = "0px";
         document.querySelector('#Counter').style.height = "0px";
         document.querySelector('#CoinCounter').style.height = "0px";
+        document.querySelector('#Timer').style.height = "0px";
     }
 
     restoreHeader() {

@@ -39,6 +39,8 @@ class Player extends Sprite{
         this.arrowRecharge = true
 
         this.coinCount = 0
+
+        this.lives = 5
     }
 
 
@@ -169,8 +171,11 @@ class Player extends Sprite{
             this.timeLeft = 57
         }
 
-        if (this.ammo < 10 && !Game.paused) {
-            this.timeLeft -= (57/(bulletCooldown * 6/100))
+        if (this.ammo < 11 && !Game.paused) {
+            if (this.ammo < 10) {
+                this.timeLeft -= (57/(bulletCooldown * 6/100))
+            }
+            
             document.querySelector('#Timer').style.height = (this.timeLeft) + "px";
         }
         

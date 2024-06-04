@@ -44,5 +44,7 @@ room1_1_1 = new Room({
     ChestList: [new Chest({position:{x:500, y:500}})],
     doorIndex: null,
 
-    RoomsListNESW: []
+    RoomsListNESW: [],
+
+    respawn: {x: 100, y: 200}
 })

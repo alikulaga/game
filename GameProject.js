@@ -1,7 +1,11 @@
 worldsList = [world1]
 var Game = new ScreenManager({mainMenu: mainMenu, currentWorld: world1, pauseMenu: pauseScreen, controlsMenu: controlsMenu, aboutMePage: aboutMePage, worldsList: worldsList})
 
-save1 = new SaveFile(5) 
+
+save1 = new LevelSaver({Level: Game.getCurrentLevel()}) 
+
+
+
 
 
 
