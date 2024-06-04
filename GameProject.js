@@ -15,6 +15,8 @@ function animate() {
     
     
     Game.update()
+
+    
     
     
     //console.log(JSON.parse(localStorage.getItem("level1_1enemies")))
@@ -87,6 +89,7 @@ window.addEventListener("keydown", (event) =>  {
         case 'a':
             keys.a.pressed = true;
             lastKeyX = 'a';
+            
         break;
         case 'w':
             keys.w.pressed = true;
@@ -103,6 +106,7 @@ window.addEventListener("keydown", (event) =>  {
         
         case 'f':
             interacting = true;
+            
         break;
         case 'Escape':
             if (Game.pauseMenuOpen && Game.lastScreen != mainMenu) {

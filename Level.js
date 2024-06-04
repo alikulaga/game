@@ -11,7 +11,7 @@ class Level {
         this.currentRoom = currentRoom
         this.background = background,
         
-        this.roomIndex = 0
+        this.savedRoom = currentRoom
     }
 
     update() {
@@ -30,6 +30,29 @@ class Level {
         weapon.update()
         this.currentRoom.load();
         
+       
+        if (((this.currentRoom.respawn != null  && this.currentRoom.enemysDead) || this.currentRoom == this.roomsList[0]) && !this.currentRoom.saved) {
+
+            save1.save()
+            this.savedRoom = new Room({
+                WallList: this.currentRoom.WallList,
+                EnemyList: this.currentRoom.EnemyList,
+                ChestList: this.currentRoom.ChestList,
+                
+                doorIndex: this.currentRoom.doorIndex,
+                RoomsListNESW: this.currentRoom.RoomsListNESW,
+                respawn: this.currentRoom.respawn})
+
+                this.savedRoom.projectileList = this.currentRoom.projectileList
+                this.savedRoom.coinList = this.currentRoom.coinList
+                this.savedRoom.enemysDead = this.currentRoom.enemysDead
+                this.savedRoom.doorRemoved = this.currentRoom.doorRemoved
+                this.savedRoom.respawn = this.currentRoom.respawn
+                this.currentRoom.saved = true
+
+        }
+
+            
         
 
         this.checkExits()
@@ -65,5 +88,11 @@ class Level {
 
     getRoomsList() {
         return this.roomsList
+    }
+
+    respawn() {
+        this.currentRoom = this.savedRoom
+        player.position.x = this.savedRoom.respawn.x
+        player.position.y = this.savedRoom.respawn.y
     }
 }

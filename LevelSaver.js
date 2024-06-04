@@ -23,13 +23,42 @@ class LevelSaver {
 
             
         }
-        localStorage.setItem("respawnLocation", JSON.stringify(this.Level.currentRoom.respawn))
+        
         
     }
 
     load() {
-        console.log(this.Level.currentRoom)
-        Game.currentWorld.levelList[Game.currentWorld.currentLevel].currentRoom = this.Level.currentRoom
+        
+
+        for (let i = 0; i < this.Level.roomsList.length; i++) {
+            console.log(Game.currentWorld.levelList[Game.currentWorld.currentLevel].roomsList[i].coinList)
+            Game.currentWorld.levelList[Game.currentWorld.currentLevel].roomsList[i].coinList = [null]
+            console.log(Game.currentWorld.levelList[Game.currentWorld.currentLevel].roomsList[i].coinList)
+            for (let j = 0; j < this.Level.roomsList[i].EnemyList.length; j++) {
+                
+                var data = JSON.parse(localStorage.getItem("enemy" + i + j))
+
+                        
+                        if (data == null) {
+                            Game.currentWorld.levelList[Game.currentWorld.currentLevel].roomsList[i].EnemyList[j] = null
+                        } else if (data.enemyType == "goblin") {
+                            Game.currentWorld.levelList[Game.currentWorld.currentLevel].roomsList[i].EnemyList[j] = this.goblinUnpack(data)
+                        } else if (data.enemyType == "skeleton") {
+                            Game.currentWorld.levelList[Game.currentWorld.currentLevel].roomsList[i].EnemyList[j] = this.skeletonUnpack(data)
+                        }
+            }
+            
+            // for (let j = 0; j < this.Level.roomsList[i].ChestList.length; j++) {
+            //     localStorage.setItem("chest" + i + j, JSON.stringify(this.Level.roomsList[i].ChestList[j]))
+            // }
+
+            Game.currentWorld.levelList[Game.currentWorld.currentLevel].roomsList[i].doorOpened = JSON.parse(localStorage.getItem("doorOpened"))
+            Game.currentWorld.levelList[Game.currentWorld.currentLevel].roomsList[i].doorOpened = JSON.parse(localStorage.getItem("enemysDead"))
+            
+          
+
+            
+        }
     }
 
     goblinUnpack(data) {

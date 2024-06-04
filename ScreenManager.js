@@ -50,7 +50,10 @@ class ScreenManager {
     
     update() {
 
-        
+        if (player.health < 1) {
+            player.health = playerHealth
+            this.respawn()
+        }
         
         this.screen.update()
     
@@ -136,6 +139,12 @@ class ScreenManager {
         document.querySelector('#CoinImage').style.height = "420px";
         document.querySelector('#Counter').style.height = "418px";
         document.querySelector('#CoinCounter').style.height = "418px";
+    }
+
+    respawn() {
+        this.currentWorld.levelList[this.currentWorld.currentLevel].respawn()
+        save1.load()
+        
     }
         
     

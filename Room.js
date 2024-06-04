@@ -13,19 +13,23 @@ class Room {
         this.EnemyList = EnemyList
         this.ChestList = ChestList
 
+        this.doorIndex = doorIndex;
+        this.RoomsListNESW = RoomsListNESW 
+        this.respawn = respawn
+
+
         this.projectileList = []
         this.coinList = [null]
 
-        this.RoomsListNESW = RoomsListNESW 
-
-        this.doorIndex = doorIndex;
+        
+       
 
         this.enemysDead = false;
 
         this.doorRemoved = false;
 
-        this.respawn = respawn
-
+        
+        this.saved = false
         
     }
 

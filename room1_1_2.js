@@ -47,5 +47,5 @@ room1_1_2 = new Room({
 
     RoomsListNESW: [],
 
-    respawn: null
+    respawn: {x: 100, y: 200}
 })

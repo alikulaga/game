@@ -18,6 +18,8 @@ let gameover = false;
 
 let playerStrength = 20;
 
+let playerHealth = 500
+
 //The coordinates where the player's attack lands
 let attackX;
 let attackY;
