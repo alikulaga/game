@@ -1,3 +1,4 @@
+//Specific type of enemy - goblins
 class Goblin extends Enemy {
     constructor({
         position,
@@ -10,6 +11,7 @@ class Goblin extends Enemy {
         this.velocity = ({x: 0, y: 0})
         this.speed = enemySpeed;
 
+        //Sets fields specifically
         this.imageNormal = "./img/Goblin.png"
         this.imageHurt = "./img/GoblinHurt.png"
         this.imageDead = "./img/GoblinDead.png"
@@ -34,26 +36,28 @@ class Goblin extends Enemy {
 
     update() {
 
+        this.position.x += this.velocity.x;
+        this.position.y += this.velocity.y;
         
         if (!Game.paused) {
             
             this.setVelocities();
 
             this.HitPlayer()
-            //this.checkProjectiles()
+
         }
         
     }
 
 
     setVelocities() {
-        this.position.x += this.velocity.x;
-        this.position.y += this.velocity.y;
-        
+        //Calls super to follow player
         super.update()
 
     }
 
+    //Attacks player if they get too close
+    //Creates 350 millisecond invincibility frames
     HitPlayer() {
         if (this.position.x + this.width() - 5 > player.position.x && this.position.x + 5 < player.position.x + player.width() 
         &&  this.position.y + this.height() - 5 > player.position.y && this.position.y + 5 < player.position.y + player.height()

@@ -1,3 +1,4 @@
+//Contains multiple levels, and handles many accessor classes to obtain important information
 class World{
     constructor ({
         levelList

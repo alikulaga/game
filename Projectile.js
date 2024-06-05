@@ -1,3 +1,4 @@
+//Takes a position and targetposition, and goes towards that target position.
 class Projectile extends Sprite{
     constructor({
         position,
@@ -13,6 +14,7 @@ class Projectile extends Sprite{
         })
         this.targetPosition = targetPosition;
 
+        this.velocity = {x: 10, y: 10}
 
         var yDist = this.targetPosition.y - this.position.y
         var xDist = this.targetPosition.x - this.position.x
@@ -35,6 +37,8 @@ class Projectile extends Sprite{
         
         this.position.x += this.xVelocity
         this.position.y += this.yVelocity
+
+       
 
         this.draw()
     }

@@ -1,14 +1,15 @@
 worldsList = [world1]
+//Creates the main game manager
 var Game = new ScreenManager({mainMenu: mainMenu, currentWorld: world1, pauseMenu: pauseScreen, controlsMenu: controlsMenu, aboutMePage: aboutMePage, deathScreen: deathScreen, worldsList: worldsList})
 
-
+//Example save file
 save1 = new LevelSaver({Level: Game.getCurrentLevel()}) 
 
 
 
 
 
-
+//Recursive function that runs over and over to load the game
 function animate() {
 
     window.requestAnimationFrame(animate);

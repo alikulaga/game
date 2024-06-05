@@ -1,3 +1,4 @@
+//INCOMPELTE
 class Weapon extends Sprite{
     constructor({
         position,

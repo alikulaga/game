@@ -1,3 +1,6 @@
+//Sprite that contains numerous items that player can collect
+
+//INCOMPLETE - DOESN'T CONTAIN ITEMS YET
 class Chest extends Sprite {
     constructor({
         position,

@@ -1,3 +1,4 @@
+//A screen that contains buttons on it
 class Menu extends Sprite {
     constructor({
         position,
@@ -16,6 +17,7 @@ class Menu extends Sprite {
         
     }
 
+    //Draws menu and iterates through buttons
     update() {
         
         this.draw()
@@ -30,6 +32,7 @@ class Menu extends Sprite {
         }
     }
 
+    //Checks what a button's function was, and switches the screenmanager to the cooresponding screen
     preformFunction(ind) {
         
         var func = this.buttonList[ind].functionality

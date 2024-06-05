@@ -1,4 +1,8 @@
+//Multiple levels contained by a world
+//Multiple rooms contained by a level
 
+//Level stores a number of rooms, as well has the information on how they connect to one another
+//Level also handles drawing everything on screen
 class Level {
     constructor({
         currentRoom,
@@ -7,6 +11,7 @@ class Level {
         
     }) {
 
+        
         this.roomsList = roomsList
         this.currentRoom = currentRoom
         this.background = background,
@@ -16,6 +21,7 @@ class Level {
         this.drawSave = false;
     }
 
+    //Draws the background, then the enemies, player, and room information
     update() {
         
         this.background.update();
@@ -32,10 +38,29 @@ class Level {
        
         this.currentRoom.load();
         
-       
+        //Saves the current room if it has not been saved yet & the enemys are all dead, or if its the first room of the level.
         if (((this.currentRoom.respawn != null  && this.currentRoom.enemysDead) || this.currentRoom == this.roomsList[0]) && !this.currentRoom.saved) {
+            this.saveCurrentRoom()
+        }
 
-            this.drawSave = true
+        if (this.drawSave) {
+            checkPoint.draw()
+        }
+
+            
+        
+
+        this.checkExits()
+
+        
+        
+        
+    }
+
+    //Creates a copy of the current room and saves all the information as it is
+    //Also starts drawing the checkpoint icon
+    saveCurrentRoom() {
+        this.drawSave = true
             setTimeout(() => {
                 this.drawSave = false;
             }, 2000)
@@ -55,24 +80,9 @@ class Level {
                 this.savedRoom.doorRemoved = this.currentRoom.doorRemoved
                 this.savedRoom.respawn = this.currentRoom.respawn
                 this.currentRoom.saved = true
-
-        }
-
-        if (this.drawSave) {
-            checkPoint.draw()
-        }
-
-            
-        
-
-        this.checkExits()
-
-        
-        
-        
     }
 
-
+    //Checks if player has left any side of the room, and loads the adjecent room if needed.
     checkExits() {
         if (player.position.y < -1 * player.height()) {
             this.currentRoom = this.currentRoom.RoomsListNESW[0]
@@ -96,10 +106,12 @@ class Level {
         }
     }
 
+    //Getter that returns the roomsList
     getRoomsList() {
         return this.roomsList
     }
 
+    //Respawn places player back into the saved room at the respawn location
     respawn() {
         this.currentRoom = this.savedRoom
         player.position.x = this.savedRoom.respawn.x

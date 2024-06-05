@@ -1,3 +1,5 @@
+//Handles how objects are drawn
+//Takes a position, scale, and image source. Also can crop
 class Sprite {
     //Constructor, creates a position, image, and scale for all sprites
     constructor({
@@ -14,6 +16,7 @@ class Sprite {
 
         this.scale = scale;
 
+        //Can be reduced at any time to crop image - Helpful for healthbars
         this.cropX = 1
         this.cropY = 1
 
@@ -55,8 +58,11 @@ class Sprite {
     checkWalls() {
         for(let i = 0; i < Game.getCurrentWallList().length; i++) {
             if (Game.getCurrentLevel().currentRoom.WallList[i] != null) {
-                var collisionDirection = Game.getCurrentLevel().currentRoom.WallList[i].colliding(this.position, this.width(), this.height(), this.velocity)
+                var collisionDirection = Game.getCurrentWallList()[i].colliding(this.position, this.width(), this.height(), this.velocity)
 
+                if (this instanceof Projectile && (collisionDirection == 1 || collisionDirection == 2)) {
+                    return true
+                }
                 if(collisionDirection == 1) {
                     this.velocity.x = 0; 
                 } 

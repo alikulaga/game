@@ -1,3 +1,4 @@
+//Sprite that bounces up and down until collected
 class Item extends Sprite{
     constructor({
         position,

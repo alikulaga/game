@@ -76,7 +76,6 @@ class Player extends Sprite{
 
     //Updates player data
     update() {
-        console.log(this.health)
         
 
         document.querySelector('#Counter').textContent = this.ammo;
@@ -155,7 +154,7 @@ class Player extends Sprite{
 
     }
 
-
+    //Knocks player in the opposite direction of an attack
     knockback({Xattack, Yattack}) {
        
         this.knocked = true
@@ -170,6 +169,7 @@ class Player extends Sprite{
         
     }
 
+    //Shoots arrow and handles the array that manages arrows, to increase efficiency
     fireArrow() {
         
             
@@ -179,10 +179,11 @@ class Player extends Sprite{
                 for (let i = 0; i < this.projectileList.length; i++) {
                     if (this.projectileList[i] == null) {
                         index = i
-                        
                         break;
                         
                     }
+
+                    
                 }
                 this.projectileList[index] = new Projectile({
                     position: {x: this.position.x, y: this.position.y}, 
@@ -195,6 +196,7 @@ class Player extends Sprite{
                     this.projectileList[index + 1] = null
                 }
     
+                
                 this.ammo--
         }
 
@@ -205,16 +207,16 @@ class Player extends Sprite{
         
     }
 
+    //Deletes some bullets if they collide with a wall or leave the screen
     updateArrows() {
         for (let i = 0; i < this.projectileList.length; i++) {
             if(this.projectileList[i] != null) {
                 this.projectileList[i].update()
                 
-                if (this.projectileList[i].position.x < 0 || this.projectileList[i].position.y < 0) {
+                if (this.projectileList[i].position.x < 0 || this.projectileList[i].position.y < 0 || this.projectileList[i].checkWalls()) {
 
 
                     this.projectileList[i] = null
-                    
                 }
                 
             }

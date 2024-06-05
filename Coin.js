@@ -1,3 +1,4 @@
+//Simple item that ups the player's coin count
 class Coin extends Item{
     constructor({
         position

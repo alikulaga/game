@@ -1,3 +1,4 @@
+//Specific type of wall that reduced number of fields for easier instantiating 
 class BrickWall extends Wall{
     constructor({
         position,

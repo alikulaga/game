@@ -1,3 +1,4 @@
+//Simple sprite that highlights when hovered over by mouse, and preforms it's function when clicked
 class Button extends Sprite {
     constructor({
         position,

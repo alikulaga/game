@@ -1,3 +1,5 @@
+//The most basic environmental element
+//Stores and updates the current walls, enemys, chests, coins, etc
 class Room {
     constructor ({
         WallList,
@@ -18,11 +20,9 @@ class Room {
         this.respawn = respawn
 
 
-        this.projectileList = []
         this.coinList = [null]
 
-        
-       
+        this.projectileList = []
 
         this.enemysDead = false;
 
@@ -34,7 +34,8 @@ class Room {
     }
 
 
-
+    //Updates all the arrays contained in a room
+    //Coins, Enemys, Walls
     load() {
         
         this.enemysDead = true;
@@ -108,13 +109,6 @@ class Room {
 
         
     }
-
-    
-
-    
-
-    
-
     
 }
 

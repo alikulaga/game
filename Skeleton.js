@@ -1,3 +1,4 @@
+//Specific type of enemy - Skeleton
 class Skeleton extends Enemy {
     constructor({
         position,
@@ -10,6 +11,7 @@ class Skeleton extends Enemy {
         this.velocity = ({x: 0, y: 0})
         this.speed = enemySpeed;
 
+        //Sets fields specifically
         this.imageNormal = "./img/Skeleton.png"
         this.imageHurt = "./img/SkeletonHurt.png"
         this.imageDead = "./img/SkeletonDead.png"
@@ -41,15 +43,23 @@ class Skeleton extends Enemy {
         this.position.x += this.velocity.x
         this.position.y += this.velocity.y
         
-
+        this.countdownArrows()
         
+        this.checkToFire()
+        
+    }
+
+    countdownArrows() {
         this.arrowCountdown--
 
         if (this.arrowCountdown == 0) {
             this.arrowCountdown = 160
             this.firing = true
         }
+    }
 
+    //If timer has reached zero and skeleton is not dead, arrow fires
+    checkToFire() {
         if (this.firing && this.health != 0) {
             this.fireArrow()
         }
@@ -59,6 +69,7 @@ class Skeleton extends Enemy {
         }
     }
 
+    //Follows player with super(), but keeps a small distance away as skeleton is a ranged enemy
     setVelocities() {
         super.update()
         var xDistance = player.position.x - this.position.x
@@ -76,6 +87,7 @@ class Skeleton extends Enemy {
         this.checkWalls()
     }
 
+    //Fires an arrow
     fireArrow() {
         
         this.arrow = new Projectile({

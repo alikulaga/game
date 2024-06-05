@@ -1,3 +1,6 @@
+//Saves the current state of an entire game
+
+//IN PROGRESS, MOSTLY REPLACED WITH LEVELSAVER CLASS
 class SaveFile {
     constructor ({
         hello

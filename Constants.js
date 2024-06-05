@@ -32,7 +32,7 @@ const player = new Player({
        
         //Where player starts
         position:
-        {x: 600, y: 50},
+        {x: 100, y: 200},
 
 
         //Velocity player starts with
@@ -67,6 +67,8 @@ const weapon = new Weapon ({
     scale: .15
 })
 
+
+//Simple borders that will be used a lot
 const northBorder = new BrickWall({
     position:{x: 0, y: 0},
     endPosition:{x: 2500, y: 25}
@@ -89,6 +91,7 @@ const westBorder = new BrickWall({
 })
 
 
+//Important buttons
 const checkPoint = new Sprite({position: {x: 50, y: 710}, imageSrc: "./img/CheckPoint.png", scale: 1})
 
 
@@ -109,7 +112,7 @@ const returnButton = new Button({position: {x: 10, y: 10}, imageSrc: "./img/Retu
 const AboutButton = new Button({position: {x: 417, y: 770}, imageSrc: "./img/AboutButton.png", scale: .8, imgHighlight: "./img/AboutButtonHighlighted.png", functionality: "goAboutMe"})
 
 
-
+//Important screens
 const pauseScreen = new Menu({position: {x: 0, y: 0}, imageSrc: "./img/PauseScreen.png", scale: 1, buttonList: [resumeButton, mainMenuButton, controlsButton]})
 
 const controlsMenu = new Menu({position: {x: 0, y: 0}, imageSrc: "./img/ControlsMenu.png", scale: 1, buttonList: [returnButton]})

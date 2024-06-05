@@ -1,5 +1,7 @@
+//Class that manages how different screens interact
 class ScreenManager {
     constructor({
+        //Takes imporatant screens, as well as the list of worlds
         mainMenu,
         currentWorld,
         pauseMenu,
@@ -25,6 +27,7 @@ class ScreenManager {
         this.deathScreenOpen = false
     }
 
+    //Many helpful getter functions
     getMainMenu() {
         return mainMenu
     }
@@ -51,6 +54,7 @@ class ScreenManager {
     }
 
     
+    //Updates the current screen, or respawns player if needed
     update() {
 
         
@@ -70,6 +74,9 @@ class ScreenManager {
         }
     }
 
+    //Swaps the current screen to the newly requested screen, also stores the previous screen incase a return is done
+
+    //CURRENTLY INEFFICIENT, NEEDS WORK
     changeScreen(newScreen) {
         
         if (newScreen == "MainMenu") {
@@ -134,6 +141,7 @@ class ScreenManager {
         
     }
 
+
     pause() {
         this.paused = true
     }
@@ -142,6 +150,10 @@ class ScreenManager {
         this.paused = false
     }
     
+
+    //NEXT TWO METHODS ARE UNOPTIMIZED, HEADER WILL BE CHANGED TO A SPRITE LATER
+
+    //Deletes HTML header
     deleteHeader() {
         document.querySelector('#gameHeader').style.height = "0px";
         document.querySelector('#HealthBar').style.height = "0px";
@@ -155,6 +167,7 @@ class ScreenManager {
         document.querySelector('#Timer').style.height = "0px";
     }
 
+    //Restores the header
     restoreHeader() {
         document.querySelector('#gameHeader').style.height = "80px";
         document.querySelector('#HealthBar').style.height = "30px";
@@ -167,6 +180,7 @@ class ScreenManager {
         document.querySelector('#CoinCounter').style.height = "418px";
     }
 
+    //Loads the most recently saved room and respawns player
     respawn() {
 
         this.currentWorld.levelList[this.currentWorld.currentLevel].respawn()

@@ -1,3 +1,4 @@
+//Stores a level's current imformation on local storage to be accessed upon respawning
 class LevelSaver {
     constructor({
         Level
@@ -6,6 +7,7 @@ class LevelSaver {
         
     }
 
+    //Goes through each array of information in each room and stores the relevant information
     save() {
         for (let i = 0; i < this.Level.roomsList.length; i++) {
             for (let j = 0; j < this.Level.roomsList[i].EnemyList.length; j++) {
@@ -29,6 +31,7 @@ class LevelSaver {
         
     }
 
+    //Replaces current room information with the stored information
     load() {
         
         var lev = Game.currentWorld.levelList[Game.currentWorld.currentLevel]
@@ -50,10 +53,7 @@ class LevelSaver {
                         }
             }
             
-            // for (let j = 0; j < this.Level.roomsList[i].ChestList.length; j++) {
-            //     localStorage.setItem("chest" + i + j, JSON.stringify(this.Level.roomsList[i].ChestList[j]))
-            // }
-
+            
             Game.currentWorld.levelList[Game.currentWorld.currentLevel].roomsList[i].doorOpened = JSON.parse(localStorage.getItem("doorOpened"))
             Game.currentWorld.levelList[Game.currentWorld.currentLevel].roomsList[i].doorOpened = JSON.parse(localStorage.getItem("enemysDead"))
             lev.roomsList[i].coinList = [null]
@@ -64,6 +64,9 @@ class LevelSaver {
             
         }
     }
+
+    //Unpack methods turn raw data into usable classes
+    //JSON parse cannot keep methods, so unpacking this information is necessary
 
     goblinUnpack(data) {
         

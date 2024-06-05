@@ -24,7 +24,6 @@ let playerHealth = 100
 let attackX;
 let attackY;
 
-let currentRoom;
 
 let interacting = false;
 
