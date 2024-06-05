@@ -35,9 +35,6 @@ class Goblin extends Enemy {
     update() {
 
         
-
-        this.draw();
-        
         if (!Game.paused) {
             
             this.setVelocities();
@@ -64,7 +61,7 @@ class Goblin extends Enemy {
 
             
 
-            player.health -= 20
+            player.health -= 10
             player.invincible = true
             player.image.src = player.imageHurt
             player.knockback({Xattack: this.position.x, Yattack: this.position.y})

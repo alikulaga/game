@@ -41,6 +41,8 @@ class Player extends Sprite{
         this.coinCount = 0
 
         this.lives = 5
+
+        this.fireCooldown = 10
     }
 
 
@@ -74,34 +76,9 @@ class Player extends Sprite{
 
     //Updates player data
     update() {
-
-        
-        if (this.health == 0) {
-            
-        }
+        console.log(this.health)
         
 
-        this.draw();
-
-
-        if (this.hit) {
-            this.image.src = "./img/PlayerHurt.png"
-            setTimeout(() => {
-                this.image.src = "./img/Player.png";
-            }, 100)
-
-
-            if (player.health > 40) {
-                this.health-= 40;
-            } else {
-                this.health = 0
-            }
-            
-            
-            document.querySelector('#HealthBar').style.width = this.health + 'px';
-            this.hit = false;
-
-        }
         document.querySelector('#Counter').textContent = this.ammo;
 
         document.querySelector('#CoinCounter').textContent = this.coinCount;
@@ -109,7 +86,7 @@ class Player extends Sprite{
 
 
         //Updates the healthbar to match player's health
-        document.querySelector('#HealthBar').style.width = this.health + 'px';
+        document.querySelector('#HealthBar').style.width = (this.health * 5) + 'px';
 
        
        
@@ -134,10 +111,7 @@ class Player extends Sprite{
                 if (enList[i].arrow != null) {
                     if (this.projectileHit(enList[i].arrow)) {
 
-                        // this.image.src = imageHurt
-                        // setTimeout(() => {
-                        //     this.image.src = this.imageNormal;
-                        // }, 400)
+                        
                         if (this.health > 30) {
                             this.knockback({Xattack: enList[i].arrow.position.x, Yattack: enList[i].arrow.position.y})
                         
@@ -154,7 +128,6 @@ class Player extends Sprite{
 
         
         this.updateArrows()
-
         
         if (this.arrowRecharge) {
             this.arrowRecharge = false;
@@ -198,30 +171,35 @@ class Player extends Sprite{
     }
 
     fireArrow() {
-        if (this.ammo > 0) {
-            var index
         
-            for (let i = 0; i < this.projectileList.length; i++) {
-                if (this.projectileList[i] == null) {
-                    index = i
-                    
-                    break;
-                    
+            
+            if (this.ammo > 0) {
+                var index
+            
+                for (let i = 0; i < this.projectileList.length; i++) {
+                    if (this.projectileList[i] == null) {
+                        index = i
+                        
+                        break;
+                        
+                    }
                 }
-            }
-            this.projectileList[index] = new Projectile({
-                position: {x: this.position.x, y: this.position.y}, 
-                velocity:{x: 0, y: 0},
-                imageSrc: "./img/RedBall.png",
-                scale: .05,
-                targetPosition: {x: mouseX, y: mouseY}
-            })
-            if (this.projectileList.length == index + 1) {
-                this.projectileList[index + 1] = null
-            }
-
-            this.ammo--
+                this.projectileList[index] = new Projectile({
+                    position: {x: this.position.x, y: this.position.y}, 
+                    velocity:{x: 0, y: 0},
+                    imageSrc: "./img/RedBall.png",
+                    scale: .05,
+                    targetPosition: {x: mouseX, y: mouseY}
+                })
+                if (this.projectileList.length == index + 1) {
+                    this.projectileList[index + 1] = null
+                }
+    
+                this.ammo--
         }
+
+        
+        
         
         
         

@@ -5,6 +5,7 @@ class ScreenManager {
         pauseMenu,
         controlsMenu,
         aboutMePage,
+        deathScreen,
         worldsList
     }) {
         this.mainMenu = mainMenu
@@ -12,6 +13,7 @@ class ScreenManager {
         this.pauseMenu = pauseMenu
         this.controlsMenu = controlsMenu
         this.aboutMePage = aboutMePage
+        this.deathScreen = deathScreen
         this.worldsList = worldsList
 
         this.screen = mainMenu
@@ -20,6 +22,7 @@ class ScreenManager {
 
         this.pauseScreenOpen = false
         this.mainMenuScreenOpen = true
+        this.deathScreenOpen = false
     }
 
     getMainMenu() {
@@ -50,13 +53,21 @@ class ScreenManager {
     
     update() {
 
+        
         if (player.health < 1) {
             player.health = playerHealth
-            this.respawn()
+            player.lives--
+            document.querySelector('#HealthBar').style.width = "0px";
+            this.changeScreen("DeathScreen")
         }
         
         this.screen.update()
-    
+        
+        
+        if (this.deathScreenOpen) {
+            
+            this.deathScreen.update()
+        }
     }
 
     changeScreen(newScreen) {
@@ -68,6 +79,9 @@ class ScreenManager {
             this.paused = true
             this.pauseMenuOpen = false
             this.mainMenuScreenOpen = true
+            if (this.deathScreenOpen) {
+                this.respawn()
+            }
         } 
         if (newScreen == "PauseMenu") {
             this.lastScreen = this.screen
@@ -94,7 +108,6 @@ class ScreenManager {
             this.restoreHeader()
         }
         if (newScreen == "Return") {
-            console.log("he")
             this.lastScreen.update()
             this.screen = this.lastScreen
         }
@@ -104,6 +117,19 @@ class ScreenManager {
             this.paused = true
             this.pauseMenuOpen = true
             this.mainMenuScreenOpen = false
+        }
+        if (newScreen == "DeathScreen") {
+            
+            this.currentWorld.paused = true
+            this.deathScreenOpen = true
+        } else {
+            this.deathScreenOpen = false
+            this.currentWorld.paused = false
+        }
+
+        if (newScreen == "Respawn") {
+            this.respawn()
+            this.deathScreenOpen = false
         }
         
     }
@@ -142,7 +168,10 @@ class ScreenManager {
     }
 
     respawn() {
+
         this.currentWorld.levelList[this.currentWorld.currentLevel].respawn()
+        this.currentWorld.levelList[this.currentWorld.currentLevel].savedRoom.coinList = [null]
+        this.getCurrentRoom().saved = true
         save1.load()
         
     }

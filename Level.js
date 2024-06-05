@@ -12,6 +12,8 @@ class Level {
         this.background = background,
         
         this.savedRoom = currentRoom
+
+        this.drawSave = false;
     }
 
     update() {
@@ -22,17 +24,21 @@ class Level {
             player.attacking = true
         }
 
-        if (Epressed) {
-            Game.paused = !Game.paused
+        
+        if (!Game.currentWorld.paused) {
+            player.update();
         }
-
-        player.update();
-        weapon.update()
+        player.draw()
+       
         this.currentRoom.load();
         
        
         if (((this.currentRoom.respawn != null  && this.currentRoom.enemysDead) || this.currentRoom == this.roomsList[0]) && !this.currentRoom.saved) {
 
+            this.drawSave = true
+            setTimeout(() => {
+                this.drawSave = false;
+            }, 2000)
             save1.save()
             this.savedRoom = new Room({
                 WallList: this.currentRoom.WallList,
@@ -50,6 +56,10 @@ class Level {
                 this.savedRoom.respawn = this.currentRoom.respawn
                 this.currentRoom.saved = true
 
+        }
+
+        if (this.drawSave) {
+            checkPoint.draw()
         }
 
             

@@ -42,8 +42,10 @@ class Room {
             if (this.EnemyList[i]!= null) {
                 this.enemysDead = false;
    
-             
-                this.EnemyList[i].update();
+                if (!Game.currentWorld.paused) {
+                    this.EnemyList[i].update();
+                }
+                this.EnemyList[i].draw()
                 
 
 

@@ -21,7 +21,7 @@ class Coin extends Item{
         if (this.despawnTime < 300) {
             
             if ((Math.floor(this.despawnTime / 10)) % 2 == 0) {
-                console.log("esf")
+                
                 this.image.src = this.imageFading
             } else {
                 this.image.src = this.imageNormal

@@ -40,7 +40,7 @@ class Skeleton extends Enemy {
         this.setVelocities()
         this.position.x += this.velocity.x
         this.position.y += this.velocity.y
-        this.draw();
+        
 
         
         this.arrowCountdown--

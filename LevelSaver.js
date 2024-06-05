@@ -23,28 +23,30 @@ class LevelSaver {
 
             
         }
+        localStorage.setItem("ammo", JSON.stringify(player.ammo))
+        localStorage.setItem("coins", JSON.stringify(player.coinCount))
         
         
     }
 
     load() {
         
-
-        for (let i = 0; i < this.Level.roomsList.length; i++) {
-            console.log(Game.currentWorld.levelList[Game.currentWorld.currentLevel].roomsList[i].coinList)
-            Game.currentWorld.levelList[Game.currentWorld.currentLevel].roomsList[i].coinList = [null]
-            console.log(Game.currentWorld.levelList[Game.currentWorld.currentLevel].roomsList[i].coinList)
+        var lev = Game.currentWorld.levelList[Game.currentWorld.currentLevel]
+        for (let i = 0; i < lev.roomsList.length; i++) {
+            
+            
+           
             for (let j = 0; j < this.Level.roomsList[i].EnemyList.length; j++) {
                 
                 var data = JSON.parse(localStorage.getItem("enemy" + i + j))
 
                         
                         if (data == null) {
-                            Game.currentWorld.levelList[Game.currentWorld.currentLevel].roomsList[i].EnemyList[j] = null
+                            lev.roomsList[i].EnemyList[j] = null
                         } else if (data.enemyType == "goblin") {
-                            Game.currentWorld.levelList[Game.currentWorld.currentLevel].roomsList[i].EnemyList[j] = this.goblinUnpack(data)
+                            lev.roomsList[i].EnemyList[j] = this.goblinUnpack(data)
                         } else if (data.enemyType == "skeleton") {
-                            Game.currentWorld.levelList[Game.currentWorld.currentLevel].roomsList[i].EnemyList[j] = this.skeletonUnpack(data)
+                            lev.roomsList[i].EnemyList[j] = this.skeletonUnpack(data)
                         }
             }
             
@@ -54,8 +56,10 @@ class LevelSaver {
 
             Game.currentWorld.levelList[Game.currentWorld.currentLevel].roomsList[i].doorOpened = JSON.parse(localStorage.getItem("doorOpened"))
             Game.currentWorld.levelList[Game.currentWorld.currentLevel].roomsList[i].doorOpened = JSON.parse(localStorage.getItem("enemysDead"))
-            
-          
+            lev.roomsList[i].coinList = [null]
+            player.ammo = JSON.parse(localStorage.getItem("ammo"))
+            player.coinCount = JSON.parse(localStorage.getItem("coins"))
+           
 
             
         }
