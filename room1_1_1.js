@@ -37,7 +37,7 @@ room1_1_1 = new Room({
 
     doorIndex: null,
 
-    RoomsListNESW: [],
+    roomListNESW: [],
 
     respawn: {x: 100, y: 200}
 })

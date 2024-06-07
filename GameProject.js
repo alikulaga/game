@@ -2,8 +2,8 @@ worldsList = [world1]
 //Creates the main game manager
 var Game = new ScreenManager({mainMenu: mainMenu, currentWorld: world1, pauseMenu: pauseScreen, controlsMenu: controlsMenu, aboutMePage: aboutMePage, deathScreen: deathScreen, worldsList: worldsList})
 
-//Example save file
-save1 = new LevelSaver({Level: Game.getCurrentLevel()}) 
+
+
 
 
 
@@ -14,57 +14,12 @@ function animate() {
 
     window.requestAnimationFrame(animate);
     
-    
     Game.update()
 
-    
-    
-    
-    //console.log(JSON.parse(localStorage.getItem("level1_1enemies")))
-
-    if (!player.knocked) {
-
-        player.velocity.x = 0;
-        player.velocity.y = 0;
-
-        if (keys.a.pressed && lastKeyX == 'a') {
-
-
-            player.velocity.x = - playerSpeed;
-        } else if(keys.d.pressed && lastKeyX == 'd') {
-            player.velocity.x = playerSpeed;
-        }
-    
-    
-    
-    
-        if (keys.w.pressed && lastKeyY == 'w') {
-            player.velocity.y = - playerSpeed;
-        } else if(keys.s.pressed && lastKeyY == 's') {
-            player.velocity.y = playerSpeed;
-        }
-    
-    
-        if (player.velocity.x != 0 && player.velocity.y != 0) {
-            var diagonalVelocity = (Math.sqrt(2) / 2.0) * player.speed;
-            player.velocity.x = (diagonalVelocity * (player.velocity.x / Math.abs(player.velocity.x)));
-            player.velocity.y = (diagonalVelocity * (player.velocity.y / Math.abs(player.velocity.y)));
-        }
-
-    }
-
-    if (Game.paused) {
-        player.velocity.x = 0;
-        player.velocity.y = 0;
-    }
-    
     interacting = false;
     leftClick = false
     Epressed = false
 
-    
-    //c.clearRect(0, 0, canvas.width, canvas.height)
-   
 }
 
 
@@ -101,7 +56,7 @@ window.addEventListener("keydown", (event) =>  {
             lastKeyY = 's';
         break;
         case ' ':
-            if (!Game.paused)
+            if (!Game.paused && !Game.deathScreenOpen)
             player.fireArrow();
         break;
         

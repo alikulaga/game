@@ -79,7 +79,7 @@ class Skeleton extends Enemy {
         if (totalDistance < 200 && !this.hit) {
             this.velocity.x = -this.velocity.x
             this.velocity.y = -this.velocity.y
-        } else if(totalDistance > 195 && totalDistance < 205) {
+        } else if(totalDistance > 195 && totalDistance < 205 && !this.hit) {
             this.velocity.x = 0
             this.velocity.y = 0
         }
@@ -98,8 +98,8 @@ class Skeleton extends Enemy {
             targetPosition: {x: player.position.x, y: player.position.y}
         })
 
-        this.index = Game.getCurrentRoom().projectileList.length
-        Game.getCurrentRoom().projectileList[this.index] = this.arrow
+        this.index = Game.getCurrentProjectileList().length
+        Game.getCurrentProjectileList()[this.index] = this.arrow
 
         this.firing = false;
         

@@ -171,7 +171,7 @@ class Enemy extends Sprite{
         
         var index = 0;
 
-        var list = Game.getCurrentRoom().coinList
+        var list = Game.getCurrentCoinList
 
         for (let i = 0; i < list.length; i++) {
             if (list[i] == null) {
@@ -180,8 +180,8 @@ class Enemy extends Sprite{
             }
         }
 
-        Game.getCurrentRoom().coinList[index] = new Coin({position:{x: this.position.x, y: this.position.y}})
-        Game.getCurrentRoom().coinList[index + 1] = null
+        Game.getCurrentCoinList()[index] = new Coin({position:{x: this.position.x, y: this.position.y}})
+        Game.getCurrentCoinList()[index + 1] = null
         
         
         this.droppedLoot = true

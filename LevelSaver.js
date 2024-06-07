@@ -9,19 +9,19 @@ class LevelSaver {
 
     //Goes through each array of information in each room and stores the relevant information
     save() {
-        for (let i = 0; i < this.Level.roomsList.length; i++) {
-            for (let j = 0; j < this.Level.roomsList[i].EnemyList.length; j++) {
-                localStorage.setItem("enemy" + i + j, JSON.stringify(this.Level.roomsList[i].EnemyList[j]))
+        for (let i = 0; i < this.Level.roomList.length; i++) {
+            for (let j = 0; j < this.Level.roomList[i].EnemyList.length; j++) {
+                localStorage.setItem("enemy" + i + j, JSON.stringify(this.Level.roomList[i].EnemyList[j]))
             }
-            for (let j = 0; j < this.Level.roomsList[i].WallList.length; j++) {
-                localStorage.setItem("wall" + i + j, JSON.stringify(this.Level.roomsList[i].WallList[j]))
+            for (let j = 0; j < this.Level.roomList[i].WallList.length; j++) {
+                localStorage.setItem("wall" + i + j, JSON.stringify(this.Level.roomList[i].WallList[j]))
             }
-            for (let j = 0; j < this.Level.roomsList[i].ChestList.length; j++) {
-                localStorage.setItem("chest" + i + j, JSON.stringify(this.Level.roomsList[i].ChestList[j]))
+            for (let j = 0; j < this.Level.roomList[i].ChestList.length; j++) {
+                localStorage.setItem("chest" + i + j, JSON.stringify(this.Level.roomList[i].ChestList[j]))
             }
-            localStorage.setItem("doorIndex" + i, JSON.stringify(this.Level.roomsList[i].doorIndex)) 
-            localStorage.setItem("doorOpened" + i, JSON.stringify(this.Level.roomsList[i].doorOpened))
-            localStorage.setItem("enemysDead" + i, JSON.stringify(this.Level.roomsList[i].enemysDead))
+            localStorage.setItem("doorIndex" + i, JSON.stringify(this.Level.roomList[i].doorIndex)) 
+            localStorage.setItem("doorOpened" + i, JSON.stringify(this.Level.roomList[i].doorOpened))
+            localStorage.setItem("enemysDead" + i, JSON.stringify(this.Level.roomList[i].enemysDead))
 
             
         }
@@ -35,28 +35,26 @@ class LevelSaver {
     load() {
         
         var lev = Game.currentWorld.levelList[Game.currentWorld.currentLevel]
-        for (let i = 0; i < lev.roomsList.length; i++) {
-            
-            
+        for (let i = 0; i < lev.roomList.length; i++) {
            
-            for (let j = 0; j < this.Level.roomsList[i].EnemyList.length; j++) {
+            for (let j = 0; j < this.Level.roomList[i].EnemyList.length; j++) {
                 
                 var data = JSON.parse(localStorage.getItem("enemy" + i + j))
 
                         
                         if (data == null) {
-                            lev.roomsList[i].EnemyList[j] = null
+                            lev.roomList[i].EnemyList[j] = null
                         } else if (data.enemyType == "goblin") {
-                            lev.roomsList[i].EnemyList[j] = this.goblinUnpack(data)
+                            lev.roomList[i].EnemyList[j] = this.goblinUnpack(data)
                         } else if (data.enemyType == "skeleton") {
-                            lev.roomsList[i].EnemyList[j] = this.skeletonUnpack(data)
+                            lev.roomList[i].EnemyList[j] = this.skeletonUnpack(data)
                         }
             }
             
             
-            Game.currentWorld.levelList[Game.currentWorld.currentLevel].roomsList[i].doorOpened = JSON.parse(localStorage.getItem("doorOpened"))
-            Game.currentWorld.levelList[Game.currentWorld.currentLevel].roomsList[i].doorOpened = JSON.parse(localStorage.getItem("enemysDead"))
-            lev.roomsList[i].coinList = [null]
+            lev.roomList[i].doorOpened = JSON.parse(localStorage.getItem("doorOpened"))
+            lev.roomList[i].doorOpened = JSON.parse(localStorage.getItem("enemysDead"))
+            lev.roomList[i].coinList = [null]
             player.ammo = JSON.parse(localStorage.getItem("ammo"))
             player.coinCount = JSON.parse(localStorage.getItem("coins"))
            

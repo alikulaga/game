@@ -7,7 +7,7 @@ class Room {
         ChestList,
         
         doorIndex,
-        RoomsListNESW,
+        roomListNESW,
         respawn
 
     }) {
@@ -16,7 +16,7 @@ class Room {
         this.ChestList = ChestList
 
         this.doorIndex = doorIndex;
-        this.RoomsListNESW = RoomsListNESW 
+        this.roomListNESW = roomListNESW 
         this.respawn = respawn
 
 
@@ -108,6 +108,15 @@ class Room {
         
 
         
+    }
+
+    coinListEmpty() {
+        for (let i = 0; i < this.coinList.length; i++) {
+            if (this.coinList[i] != null) {
+                return false
+            }
+        }
+        return true
     }
     
 }

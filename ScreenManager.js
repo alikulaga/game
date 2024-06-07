@@ -25,6 +25,8 @@ class ScreenManager {
         this.pauseScreenOpen = false
         this.mainMenuScreenOpen = true
         this.deathScreenOpen = false
+        
+        this.levelSave = new LevelSaver({Level: currentWorld.getLevel()}) 
     }
 
     //Many helpful getter functions
@@ -43,11 +45,20 @@ class ScreenManager {
     getCurrentRoom() {
         return this.currentWorld.getRoom()
     }
+    getCurrentRoomList() {
+        return this.getCurrentLevel().roomList
+    }
     getCurrentEnemyList() {
         return this.currentWorld.getEnemyList()
     }
     getCurrentWallList() {
         return this.currentWorld.getWallList()
+    }
+    getCurrentCoinList() {
+        return this.getCurrentRoom().coinList
+    }
+    getCurrentProjectileList() {
+        return this.getCurrentRoom().projectileList
     }
     paused() {
         return this.paused
@@ -186,8 +197,12 @@ class ScreenManager {
         this.currentWorld.levelList[this.currentWorld.currentLevel].respawn()
         this.currentWorld.levelList[this.currentWorld.currentLevel].savedRoom.coinList = [null]
         this.getCurrentRoom().saved = true
-        save1.load()
+        this.levelSave.load()
         
+    }
+
+    saveLevel() {
+        this.levelSave.save()
     }
         
     

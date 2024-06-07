@@ -61,7 +61,7 @@ room1_1_4 = new Room({
 
     doorIndex: 5,
 
-    RoomsListNESW: [],
+    roomListNESW: [],
 
     respawn: null
 

@@ -6,13 +6,12 @@
 class Level {
     constructor({
         currentRoom,
-        roomsList,
+        roomList,
         background,
-        
     }) {
 
         
-        this.roomsList = roomsList
+        this.roomList = roomList
         this.currentRoom = currentRoom
         this.background = background,
         
@@ -24,6 +23,8 @@ class Level {
     //Draws the background, then the enemies, player, and room information
     update() {
         
+
+
         this.background.update();
         
         if (leftClick && !Game.paused) {
@@ -37,9 +38,13 @@ class Level {
         player.draw()
        
         this.currentRoom.load();
+
+        
+        
+       
         
         //Saves the current room if it has not been saved yet & the enemys are all dead, or if its the first room of the level.
-        if (((this.currentRoom.respawn != null  && this.currentRoom.enemysDead) || this.currentRoom == this.roomsList[0]) && !this.currentRoom.saved) {
+        if (((this.currentRoom.respawn != null  && this.currentRoom.enemysDead) || this.currentRoom == this.roomList[0]) && !this.currentRoom.saved && this.currentRoom.coinListEmpty()) {
             this.saveCurrentRoom()
         }
 
@@ -64,14 +69,14 @@ class Level {
             setTimeout(() => {
                 this.drawSave = false;
             }, 2000)
-            save1.save()
+            Game.saveLevel()
             this.savedRoom = new Room({
                 WallList: this.currentRoom.WallList,
                 EnemyList: this.currentRoom.EnemyList,
                 ChestList: this.currentRoom.ChestList,
                 
                 doorIndex: this.currentRoom.doorIndex,
-                RoomsListNESW: this.currentRoom.RoomsListNESW,
+                roomListNESW: this.currentRoom.roomListNESW,
                 respawn: this.currentRoom.respawn})
 
                 this.savedRoom.projectileList = this.currentRoom.projectileList
@@ -85,30 +90,30 @@ class Level {
     //Checks if player has left any side of the room, and loads the adjecent room if needed.
     checkExits() {
         if (player.position.y < -1 * player.height()) {
-            this.currentRoom = this.currentRoom.RoomsListNESW[0]
+            this.currentRoom = this.currentRoom.roomListNESW[0]
             player.position.y = canvas.height - player.height()
             player.projectileList = [null]
 
         } else if (player.position.x > canvas.width) {
-            this.currentRoom = this.currentRoom.RoomsListNESW[1]
+            this.currentRoom = this.currentRoom.roomListNESW[1]
             player.position.x = 0;
             player.projectileList = [null]
 
         } else if(player.position.y > canvas.height - 80) {
             player.position.y = 0
-            this.currentRoom = this.currentRoom.RoomsListNESW[2]
+            this.currentRoom = this.currentRoom.roomListNESW[2]
             player.projectileList = [null]
             
         } else if (player.position.x < -1 * player.width()) {
-            this.currentRoom = this.currentRoom.RoomsListNESW[3];
+            this.currentRoom = this.currentRoom.roomListNESW[3];
             player.position.x = canvas.width - player.width();
             player.projectileList = [null]
         }
     }
 
-    //Getter that returns the roomsList
-    getRoomsList() {
-        return this.roomsList
+    //Getter that returns the roomList
+    getRoomList() {
+        return this.roomList
     }
 
     //Respawn places player back into the saved room at the respawn location

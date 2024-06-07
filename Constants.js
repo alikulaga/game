@@ -26,7 +26,6 @@ const keys = {
 }
 
 
-
 //The player we control
 const player = new Player({
        
@@ -51,20 +50,8 @@ const player = new Player({
         //Scale the image to proper size
         scale: .15,
 
-
         //How much health should player have
         health: 100
-})
-
-
-const objectLimit = 300
-
-
-//Weapon, always tracks to player
-const weapon = new Weapon ({
-    position: {x: player.position.x - 20, y: player.position.y - 20},
-    imageSrc: "./img/Sword.png",
-    scale: .15
 })
 
 
@@ -90,10 +77,12 @@ const westBorder = new BrickWall({
 
 })
 
+const objectLimit = 300
+
+
 
 //Important buttons
 const checkPoint = new Sprite({position: {x: 50, y: 710}, imageSrc: "./img/CheckPoint.png", scale: 1})
-
 
 const resumeButton = new Button({position: {x: 50, y: 50}, imageSrc: "./img/ResumeButton.png", scale: 1.5, imgHighlight: "./img/ResumeButtonHighlighted.png", functionality: "resume"})
 
@@ -110,6 +99,8 @@ const controlsButton_Menu = new Button({position: {x: 417, y: 670}, imageSrc: ".
 const returnButton = new Button({position: {x: 10, y: 10}, imageSrc: "./img/ReturnButton.png", scale: 1, imgHighlight: "./img/ReturnButtonHighlighted.png", functionality: "return"})
 
 const AboutButton = new Button({position: {x: 417, y: 770}, imageSrc: "./img/AboutButton.png", scale: .8, imgHighlight: "./img/AboutButtonHighlighted.png", functionality: "goAboutMe"})
+
+
 
 
 //Important screens
