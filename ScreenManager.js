@@ -126,7 +126,8 @@ class ScreenManager {
             this.restoreHeader()
         }
         if (newScreen == "Return") {
-            this.lastScreen.update()
+            
+            
             this.screen = this.lastScreen
         }
         if (newScreen == "AboutMe") {
@@ -166,6 +167,7 @@ class ScreenManager {
 
     //Deletes HTML header
     deleteHeader() {
+        
         document.querySelector('#gameHeader').style.height = "0px";
         document.querySelector('#HealthBar').style.height = "0px";
         document.querySelector('#HealthBackground').style.height = "0px";
@@ -180,6 +182,7 @@ class ScreenManager {
 
     //Restores the header
     restoreHeader() {
+      
         document.querySelector('#gameHeader').style.height = "80px";
         document.querySelector('#HealthBar').style.height = "30px";
         document.querySelector('#HealthBackground').style.height = "30px";

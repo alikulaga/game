@@ -171,7 +171,7 @@ class Enemy extends Sprite{
         
         var index = 0;
 
-        var list = Game.getCurrentCoinList
+        var list = Game.getCurrentCoinList()
 
         for (let i = 0; i < list.length; i++) {
             if (list[i] == null) {

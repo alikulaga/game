@@ -29,6 +29,7 @@ class Button extends Sprite {
             
             this.image.src = this.imgHighlight
             
+            console.log(leftClick)
             return (leftClick)
         } else {
             this.image.src = this.imgNormal
